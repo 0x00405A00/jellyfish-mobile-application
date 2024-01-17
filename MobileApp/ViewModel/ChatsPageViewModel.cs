@@ -1,21 +1,17 @@
-﻿//#define SAMPLE_DATA
+﻿#define SAMPLE_DATA
+using CommunityToolkit.Maui.Core.Extensions;
+using MobileApp.ControlExtension;
+using MobileApp.Controls;
 using MobileApp.Model;
 using MobileApp.Service;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using MobileApp.Controls;
-using MobileApp.Handler.Data;
-using SQLiteNetExtensionsAsync.Extensions;
-using MobileApp.Data.SqlLite.Schema;
-using MobileApp.Handler.Data.InternalDataInterceptor.Invoker;
 
 namespace MobileApp.ViewModel
 {
-
     public class ChatsPageViewModel : BaseViewModel
     {
         private readonly NavigationService _navigationService;
-        private readonly JellyfishSqlliteDatabaseHandler _jellyfishSqlliteDatabaseHandler;
         private readonly MobileApp.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
         private readonly IServiceProvider _serviceProvider;
         private ObservableCollection<Chat> _chats = new ObservableCollection<Chat>();
@@ -76,11 +72,9 @@ namespace MobileApp.ViewModel
 
         public ChatsPageViewModel(
             IServiceProvider serviceProvider,
-            JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler,
             MobileApp.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
             NavigationService navigationService)
         {
-            _jellyfishSqlliteDatabaseHandler = jellyfishSqlliteDatabaseHandler;
             _internalDataInterceptorApplication = internalDataInterceptorApplication;   
             _serviceProvider = serviceProvider;
             _navigationService = navigationService;
@@ -104,32 +98,12 @@ namespace MobileApp.ViewModel
 
             var insertMsgResponse = await  _jellyfishSqlliteDatabaseHandler.Insert<MessageEntity>(new MessageEntity { ChatId = 1, Text = "meine erste nachricht", UserId = 1, Readed=false, MessageId=1, MessageDateTime = DateTime.Now });*/
             #endregion
+#if SAMPLE_DATA
+            _chats = await LoadChats();
+#endif
             try
             {
 
-                var chats = await _jellyfishSqlliteDatabaseHandler.DatabaseHandle.GetAllWithChildrenAsync<ChatEntity>();
-                var users = await _jellyfishSqlliteDatabaseHandler.Select<UserEntity>();
-
-                foreach (var chat in chats)
-                {
-                    var chatItemForVm = new Chat(chat);
-                    chatItemForVm.Messages = new ObservableCollection<MessageGroup>();
-                    if (chat.Messages != null)
-                    {
-                        foreach (var msg in chat.Messages)
-                        {
-                            var compareModel = new MessageGroup(DateOnly.FromDateTime(msg.MessageDateTime));
-                            var msgGrp = chatItemForVm.Messages.ToList().Find(x => x.SortKey == compareModel.SortKey);
-                            if (msgGrp == null)
-                            {
-                                chatItemForVm.Messages.Add(compareModel);
-                            }
-                            Message message = new Message(msg);
-                            compareModel.Add(message);
-                        }
-                    }
-                    this.Chats.Add(chatItemForVm);
-                }
 
                 OnPropertyChanged(nameof(AreChatsAvailable));
                 OnPropertyChanged(nameof(Chats));

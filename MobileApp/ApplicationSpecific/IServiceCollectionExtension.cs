@@ -18,6 +18,11 @@ using Shared.Infrastructure.Backend.Api;
 using Shared.Infrastructure.Backend.SignalR;
 using Shared.Infrastructure.Backend;
 using MobileApp.Handler;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+
+using System.Reflection;
+
 
 
 
@@ -32,18 +37,6 @@ namespace MobileApp.ApplicationSpecific
 {
     public static class IServiceCollectionExtension
     {
-        public static IServiceCollection AddSqlLiteDatabase(this IServiceCollection services, string databasePath, SQLite.SQLiteOpenFlags flags)
-        {
-#if IOS
-            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_sqlite3());
-#elif ANDROID
-        SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_e_sqlite3());
-#endif
-            var initSqlLiteHandle = new JellyfishSqlliteDatabaseHandler();//Abstrakten Typ angeben, da dieser BaseType aller konkreten DB-Entities ist und mittels des BaseTypes alle Typen innerhalb der Assembly gesucht werden
-            initSqlLiteHandle.Init(databasePath, flags);
-            services.AddSingleton(initSqlLiteHandle);
-            return services;
-        }
         public static IServiceCollection AddViewModels(this IServiceCollection services)
         {
             services.AddSingleton<ChatsPageViewModel>();
@@ -59,6 +52,34 @@ namespace MobileApp.ApplicationSpecific
             services.AddSingleton<RegisterContentPageViewModel>();
             services.AddSingleton<SettingsPageViewModel>();
             return services;
+        }
+        public static string GetDatabasePath()
+        {
+            string dbPath = null;
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                dbPath = Global.DatabasePath;
+                
+            }
+            if (DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                dbPath = Global.DatabasePath;
+            }
+            return dbPath;
+        }
+        public static MauiAppBuilder AddIConfiguration(this MauiAppBuilder builder)
+        {
+
+            using var stream = AssemblyReference.Assembly.GetManifestResourceStream("MobileApp.appsettings.json");
+
+            var config = new ConfigurationBuilder()
+                .AddJsonStream(stream)
+                .Build();
+            var section = config.GetSection("ConnectionStrings");
+            string connStr = $"Filename={GetDatabasePath()}";
+            section["JellyfishSqlLiteDatabase"] = connStr;
+            builder.Configuration.AddConfiguration(config);
+            return builder;
         }
         public static IServiceCollection AddDeviceHandlers(this IServiceCollection services,ApplicationConfigHandler applicationHandler)
         {
@@ -77,25 +98,7 @@ namespace MobileApp.ApplicationSpecific
             services.AddSingleton<ClipBoardHandler>(new ClipBoardHandler());
             services.AddSingleton<NetworkingHandler>(new NetworkingHandler(() => { }, () => { }));
 
-            /*var jellyfishBackendClient = new JellyfishBackendApi(applicationHandler);
-            string loginSessionEndpoint = WebApiEndpointStruct.LoginSessionEndpoint;
-            string logoutSessionEndpoint = WebApiEndpointStruct.LogoutSessionEndpoint;
-            string validateSessionEndpoint = WebApiEndpointStruct.ValidateSessionEndpoint;
-            string refreshSessionEndpoint = WebApiEndpointStruct.RefreshSessionEndpoint;
-            string connectionTestEndpoint = WebApiEndpointStruct.ConnectionTestEndpoint;
-            string protocolApi = applicationHandler.ApplicationConfig.NetworkConfig.WebApiHttpClientTransportProtocol == Data.AppConfig.ConcreteImplements.NetworkConfig.HTTP_TRANSPORT_PROTOCOLS.HTTP ? "http://" : "https://";
-            string baseUrl =
-                protocolApi +
-                applicationHandler.ApplicationConfig.NetworkConfig.WebApiBaseUrl + ":" +
-                applicationHandler.ApplicationConfig.NetworkConfig.WebApiBaseUrlPort +
-                applicationHandler.ApplicationConfig.NetworkConfig.WebApiPath + "/";
-            jellyfishBackendClient.Init(baseUrl,
-                loginSessionEndpoint,
-                logoutSessionEndpoint,
-                validateSessionEndpoint,
-                refreshSessionEndpoint,
-                connectionTestEndpoint);*/
-            //services.AddSingleton<JellyfishBackendApi>();
+            services.AddSingleton<JellyfishBackendApi>();
 
             services.AddSingleton<JellyfishWebApiRestClientInvoker>();
             services.AddSingleton<ViewModelInvoker>();

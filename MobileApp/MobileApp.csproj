@@ -50,20 +50,60 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AndroidResource Remove="Handler\Data\old\**" />
+    <AndroidResource Remove="Handler\Device\Cache\**" />
     <Compile Remove="Data\Backend\**" />
+    <Compile Remove="Handler\Data\old\**" />
+    <Compile Remove="Handler\Device\Cache\**" />
     <EmbeddedResource Remove="Data\Backend\**" />
+    <EmbeddedResource Remove="Handler\Data\old\**" />
+    <EmbeddedResource Remove="Handler\Device\Cache\**" />
     <MauiCss Remove="Data\Backend\**" />
+    <MauiCss Remove="Handler\Data\old\**" />
+    <MauiCss Remove="Handler\Device\Cache\**" />
     <MauiXaml Remove="Data\Backend\**" />
+    <MauiXaml Remove="Handler\Data\old\**" />
+    <MauiXaml Remove="Handler\Device\Cache\**" />
     <None Remove="Data\Backend\**" />
+    <None Remove="Handler\Data\old\**" />
+    <None Remove="Handler\Device\Cache\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\SqlLite\Schema\AbstractEntity.cs" />
+    <Compile Remove="Data\SqlLite\Schema\ChatEntity.cs" />
+    <Compile Remove="Data\SqlLite\Schema\DatabaseVersionEntity.cs" />
+    <Compile Remove="Data\SqlLite\Schema\DatabaseVersionTableVersionEntity.cs" />
+    <Compile Remove="Data\SqlLite\Schema\MessageEntity.cs" />
+    <Compile Remove="Data\SqlLite\Schema\MessageLocationEntity.cs" />
+    <Compile Remove="Data\SqlLite\Schema\UserEntity.cs" />
+    <Compile Remove="Data\SqlLite\Schema\UserLinkChatEntity.cs" />
+    <Compile Remove="Handler\Data\SqlLiteDatabaseHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
     <None Remove="Resources\Raw\error1.json" />
     <None Remove="Resources\Raw\loading2.json" />
     <None Remove="Resources\Raw\map-routing.json" />
     <None Remove="Resources\Raw\octopus2.json" />
     <None Remove="Resources\Raw\registered.json" />
     <None Remove="Resources\Raw\website.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\SqlLite\Schema\AbstractEntity.cs" />
+    <None Include="Data\SqlLite\Schema\ChatEntity.cs" />
+    <None Include="Data\SqlLite\Schema\DatabaseVersionEntity.cs" />
+    <None Include="Data\SqlLite\Schema\DatabaseVersionTableVersionEntity.cs" />
+    <None Include="Data\SqlLite\Schema\MessageEntity.cs" />
+    <None Include="Data\SqlLite\Schema\MessageLocationEntity.cs" />
+    <None Include="Data\SqlLite\Schema\UserEntity.cs" />
+    <None Include="Data\SqlLite\Schema\UserLinkChatEntity.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,18 +114,13 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
     <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.3" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.86" />
-    <PackageReference Include="sqlite-net-base" Version="1.8.116" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
-    <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
-    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
-    <PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
-    <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
-    <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.4" />
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.ios" Version="2.1.7" />
     <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
   </ItemGroup>
 
@@ -181,13 +216,22 @@
 
 
   <ItemGroup>
-    <Folder Include="Handler\Device\Cache\" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Domain">
+      <HintPath>..\..\jellyfish-backend-ddd\Domain\bin\Backend\net8.0\Domain.dll</HintPath>
+    </Reference>
     <Reference Include="Shared">
       <HintPath>..\..\jellyfish-backend-ddd\Shared\bin\Backend\net8.0\Shared.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+    <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android">
+      <Version>2.1.7</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

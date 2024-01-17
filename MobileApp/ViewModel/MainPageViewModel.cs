@@ -1,14 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
 using MobileApp.Controls;
 using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Data;
 using MobileApp.Handler.Device.Media.Contact;
 using MobileApp.Handler.Device.Vibrate;
 using MobileApp.Model;
 using MobileApp.Service;
 using MobileApp.View;
-using Shared.Infrastructure.Backend.Api;
-using Shared.Infrastructure.Backend.SignalR;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -22,7 +19,6 @@ namespace MobileApp.ViewModel
         private readonly NavigationService _navigationService;
         private readonly IServiceProvider _serviceProvider;
         private readonly DeviceContactHandler _deviceContactHandler;
-        private readonly JellyfishSqlliteDatabaseHandler _jellyfishSqlliteDatabaseHandler;
         public ChatsPageViewModel ChatsPageViewModel
         {
             get;
@@ -134,7 +130,6 @@ namespace MobileApp.ViewModel
         public MainPageViewModel(IServiceProvider serviceProvider,
             SettingsPageViewModel settingsPageViewModel,
             VibrateHandler vibrateHandler,
-            JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler,
             NavigationService navigationService,
             ChatsPageViewModel chatsPageViewModel,
             StatusPageViewModel statusPageViewModel,
@@ -143,7 +138,6 @@ namespace MobileApp.ViewModel
             ApplicationConfigHandler applicationConfigHandler) : base()
         {
             _settingsPageViewModel = settingsPageViewModel;
-            _jellyfishSqlliteDatabaseHandler = jellyfishSqlliteDatabaseHandler;
             _applicationConfigHandler = applicationConfigHandler;
             _deviceContactHandler = deviceContactHandler;
             ChatsPageViewModel = chatsPageViewModel;

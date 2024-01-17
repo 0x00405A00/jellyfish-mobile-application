@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MobileApp.ViewModel;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MobileApp.Data.SqlLite.Schema;
-using MobileApp.ViewModel;
 
 namespace MobileApp.Model
 {
@@ -91,19 +85,5 @@ namespace MobileApp.Model
         {
             
         }
-        public Chat(ChatEntity chatEntity)
-        {
-            this.Name = chatEntity.ChatName;
-            if(chatEntity.Users != null)
-            {
-                foreach(var user in chatEntity.Users)
-                {
-
-                    this.ChatMembers.Add(new User(user));
-                }
-            }
-            this.ChatUuid = chatEntity.ChatUuidValue;
-        }
-
     }
 }

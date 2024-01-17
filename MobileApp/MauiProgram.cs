@@ -1,6 +1,8 @@
 ﻿using Camera.MAUI;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Markup;
+using Infrastructure;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.LifecycleEvents;
@@ -9,6 +11,7 @@ using MobileApp.ApplicationSpecific;
 using MobileApp.Handler.AppConfig;
 using MobileApp.Service;
 using SkiaSharp.Views.Maui.Controls.Hosting;
+using System.Reflection;
 /*using Plugin.LocalNotification;
 using Plugin.LocalNotification.AndroidOption;*/
 
@@ -112,10 +115,14 @@ namespace MobileApp
 #if __ANDROID__//Fixxed bei einer CollectionView in der man Images auswählen kann folgenden Fehler: Canvas: trying to use a recycled bitmap
         ImageHandler.Mapper.PrependToMapping(nameof(Microsoft.Maui.IImage.Source), (handler, view) => PrependToMappingImageSource(handler, view));
 #endif
+            builder.AddIConfiguration();
             builder.Services.AddSingleton(appConfigHandler);
 
 
-            builder.Services.AddSqlLiteDatabase(Global.DatabasePath, Global.DatabaseFlags);
+            var fs = Directory.GetFiles(FileSystem.AppDataDirectory);
+            builder.AddIConfiguration();
+            builder.Services.AddInfrastructure();
+            //builder.Services.AddSqlLiteDatabase(Global.DatabasePath, Global.DatabaseFlags);
 
             builder.Services.AddSingleton<NavigationService>();
             builder.Services.AddDeviceHandlers(appConfigHandler);

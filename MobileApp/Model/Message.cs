@@ -1,7 +1,6 @@
-﻿using MobileApp.Data.SqlLite.Schema;
-using MobileApp.ViewModel;
-using System.Text.RegularExpressions;
+﻿using MobileApp.ViewModel;
 using Shared.DataTransferObject.Messenger;
+using System.Text.RegularExpressions;
 
 namespace MobileApp.Model
 {
@@ -199,10 +198,5 @@ namespace MobileApp.Model
         {
 
         }
-        public Message(MessageEntity messageEntity)
-        {
-            
-        }
-
     }
 }

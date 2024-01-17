@@ -1,15 +1,12 @@
-﻿using MobileApp.Data.SqlLite.Schema;
-using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
+﻿using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
 using Shared.DataTransferObject.Messenger;
 
 namespace MobileApp.Handler.Data.InternalDataInterceptor.Invoker
 {
     public class SqlLiteDatabaseHandlerInvoker : IInternalDataInterceptorApplicationInvoker
     {
-        private readonly JellyfishSqlliteDatabaseHandler _jellyfishSqlliteDatabaseHandler;
-        public SqlLiteDatabaseHandlerInvoker(JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler) 
+        public SqlLiteDatabaseHandlerInvoker() 
         {
-            _jellyfishSqlliteDatabaseHandler = jellyfishSqlliteDatabaseHandler; 
         }
         public Task CreateFriendRequest(params UserFriendshipRequestDTO[] data)
         {

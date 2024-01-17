@@ -1,5 +1,4 @@
-﻿using MobileApp.Data.SqlLite.Schema;
-using MobileApp.ViewModel;
+﻿using MobileApp.ViewModel;
 using Shared.DataTransferObject.Messenger;
 
 namespace MobileApp.Model
@@ -130,10 +129,6 @@ namespace MobileApp.Model
 
         }
         public User(MessengerUserDTO userDTO)
-        {
-
-        }
-        public User(UserEntity userEntity)
         {
 
         }

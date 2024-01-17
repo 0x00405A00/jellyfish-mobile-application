@@ -1,11 +1,8 @@
 ﻿using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Data;
 using MobileApp.Handler.Device.Media;
 using MobileApp.Service;
 using MobileApp.View;
 using MobileApp.ViewModel;
-using Shared.Infrastructure.Backend.Api;
-using Shared.Infrastructure.Backend.SignalR;
 
 namespace MobileApp
 {
@@ -17,13 +14,12 @@ namespace MobileApp
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,
             NavigationService navigationService,
-            JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler,
             ApplicationResourcesHandler applicationResourcesHandler)
         {
             InitializeComponent();
             Page viewPage = new NavigationPage(new LoginPage(loginPageViewModel));
             MainPage = viewPage;
-            Load(applicationConfigHandler, loginPageViewModel, mainPageViewModel, navigationService, jellyfishSqlliteDatabaseHandler, applicationResourcesHandler);
+            Load(applicationConfigHandler, loginPageViewModel, mainPageViewModel, navigationService, applicationResourcesHandler);
 
         }
         public static Dictionary<string, ResourceDictionary> ResourceDictionary;
@@ -32,7 +28,6 @@ namespace MobileApp
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,
             NavigationService navigationService,
-            JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler,
             ApplicationResourcesHandler applicationResourcesHandler)
         {
             bool loggedin = true;
