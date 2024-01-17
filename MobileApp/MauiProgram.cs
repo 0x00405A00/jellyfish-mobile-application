@@ -112,9 +112,6 @@ namespace MobileApp
 #if __ANDROID__//Fixxed bei einer CollectionView in der man Images auswählen kann folgenden Fehler: Canvas: trying to use a recycled bitmap
         ImageHandler.Mapper.PrependToMapping(nameof(Microsoft.Maui.IImage.Source), (handler, view) => PrependToMappingImageSource(handler, view));
 #endif
-
-
-            builder.Services.AddSingleton<JsonHandler>();
             builder.Services.AddSingleton(appConfigHandler);
 
 

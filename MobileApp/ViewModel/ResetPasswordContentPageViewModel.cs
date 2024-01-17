@@ -1,8 +1,8 @@
 ﻿using MobileApp.Controls;
-using MobileApp.Handler.Backend.Communication.WebApi;
 using MobileApp.Service;
 using MobileApp.Validation;
 using Shared.DataTransferObject;
+using Shared.Infrastructure.Backend.Api;
 using System.Windows.Input;
 
 namespace MobileApp.ViewModel
@@ -96,9 +96,9 @@ namespace MobileApp.ViewModel
         public ICommand SubmitPasswordActionCommand { get; private set; }
         public ICommand ValidateByValueChangeCommand { get; private set; }
         private readonly NavigationService _navigationService;
-        private readonly JellyfishWebApiRestClient _jellyfishWebApiRestClient;
+        private readonly JellyfishBackendApi _jellyfishWebApiRestClient;
 
-        public ResetPasswordContentPageViewModel(JellyfishWebApiRestClient jellyfishWebApiRestClient,NavigationService navigationService)
+        public ResetPasswordContentPageViewModel(JellyfishBackendApi jellyfishWebApiRestClient,NavigationService navigationService)
         {
             _navigationService = navigationService;
             _jellyfishWebApiRestClient = jellyfishWebApiRestClient;
@@ -143,7 +143,7 @@ namespace MobileApp.ViewModel
             if (validEntries)
             {
                 BlockBackSwitch = true;
-                var response = await _jellyfishWebApiRestClient.ResetPasswordRequest(new PasswordResetRequestDataTransferModel { EMail = this.Email.Value }, _webApiActionCancelationToken.Token);
+                var response = await _jellyfishWebApiRestClient.ResetPasswordRequest(new PasswordResetRequestDTO { Email = this.Email.Value }, _webApiActionCancelationToken.Token);
                 if(!response.IsSuccess)
                 {
                     NotificationHandler.ToastNotify("Error: The request is not okay.");
@@ -166,7 +166,7 @@ namespace MobileApp.ViewModel
             if (IsSecureCodeValid)
             {
                 //send to backend and processing the result
-                var response = await _jellyfishWebApiRestClient.ResetPasswordConfirmation(new PasswordResetConfirmationCodeDataTransferModel { PasswordResetCode = this.SecureCodeConcat }, _webApiActionCancelationToken.Token);
+                var response = await _jellyfishWebApiRestClient.ResetPassword(new PasswordResetDataTransferModel { PasswordResetCode = this.SecureCodeConcat }, _webApiActionCancelationToken.Token);
                 if(!response.IsSuccess)
                 {
 

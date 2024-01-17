@@ -1,11 +1,11 @@
 ﻿using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Backend.Communication.SignalR;
-using MobileApp.Handler.Backend.Communication.WebApi;
 using MobileApp.Handler.Data;
 using MobileApp.Handler.Device.Media;
 using MobileApp.Service;
 using MobileApp.View;
 using MobileApp.ViewModel;
+using Shared.Infrastructure.Backend.Api;
+using Shared.Infrastructure.Backend.SignalR;
 
 namespace MobileApp
 {
@@ -14,7 +14,7 @@ namespace MobileApp
         private CancellationTokenSource _webApiActionCancelationToken = new CancellationTokenSource();
         public App(
             SignalRClient signalRClient,
-            JellyfishWebApiRestClient jellyfishWebApiRestClient,
+            JellyfishBackendApi jellyfishWebApiRestClient,
             ApplicationConfigHandler applicationConfigHandler,
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,
@@ -31,7 +31,7 @@ namespace MobileApp
         public static Dictionary<string, ResourceDictionary> ResourceDictionary;
         public async Task Load(
             SignalRClient signalRClient,
-            JellyfishWebApiRestClient jellyfishWebApiRestClient,
+            JellyfishBackendApi jellyfishWebApiRestClient,
             ApplicationConfigHandler applicationConfigHandler,
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,
@@ -39,7 +39,7 @@ namespace MobileApp
             JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler,
             ApplicationResourcesHandler applicationResourcesHandler)
         {
-            bool loggedin = applicationConfigHandler.ApplicationConfig.AccountConfig.UserSession?.TokenExpires > DateTime.Now;
+            bool loggedin = true;
 
 
 

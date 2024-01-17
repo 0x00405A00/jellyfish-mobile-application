@@ -197,11 +197,7 @@ namespace MobileApp.Model
         }
         public Message(MessageDTO messageDTO)
         {
-            this.Text = messageDTO.Text;
-            this.MessageId = messageDTO.Uuid;
-            this.Received = true;
-            this.MessageDateTime = messageDTO.CreationDateTime;
-            this.SendToBackend = true;
+
         }
         public Message(MessageEntity messageEntity)
         {

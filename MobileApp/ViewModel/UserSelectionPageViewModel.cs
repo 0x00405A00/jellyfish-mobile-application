@@ -212,16 +212,6 @@ namespace MobileApp.ViewModel
         public async void LoadFriends()
         {
 
-            var response = await _internalDataInterceptorApplication.GetFriends(CancellationToken.None);
-
-            if (response.IsSuccess)
-            {
-                foreach(var item in response.ApiResponseDeserialized.data)
-                {
-
-                    UserFriendsSelectionCollection.Add(new User(item.attributes));
-                }
-            }
             OnPropertyChanged(nameof(HasUserFriendsSelectionCollectionItems));
         }
         public void SetResponseQueue(string responseQueue)
@@ -316,22 +306,7 @@ namespace MobileApp.ViewModel
             //async code to backend with searchtext as filter to get the best result
             if (UserSearchHitsCollection != null)
                 UserSearchHitsCollection.Clear();
-            var response = await _internalDataInterceptorApplication.SearchUser(this.SearchText, CancellationToken.None);
-            if(response != null)
-            {
-                if(response.IsSuccess)
-                {
-                    foreach(var item in response.ApiResponseDeserialized.data)
-                    {
-                        var user = new User(item.attributes);
-                        this.UserSearchHitsCollection.Add(user);
-                        if (_applicationConfigHandler.ApplicationConfig.AccountConfig.User != null&& user.UserUuid != _applicationConfigHandler.ApplicationConfig.AccountConfig.User.UserUuid)
-                        {
 
-                        }
-                    }
-                }
-            }
             IsSearchingOnline = false;
             stopwatch.Stop();
 
@@ -346,7 +321,7 @@ namespace MobileApp.ViewModel
         /// </summary>
         public async void AddOnlineUserAction(User user)
         {
-            var response = await _internalDataInterceptorApplication.CreateFriendRequest(new UserFriendshipRequestDTO[] { new UserFriendshipRequestDTO { TargetUserUuid = user.UserUuid } }); 
+
         }
         /// <summary>
         /// Action that remove a current friend 

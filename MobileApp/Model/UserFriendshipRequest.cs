@@ -130,12 +130,7 @@ namespace MobileApp.Model
 
         public UserFriendshipRequest(UserFriendshipRequest userDTO)
         {
-            RequestUuid = userDTO.Uuid;
-            TargetUserUuid = userDTO.TargetUserUuid;
-            TargetUserRequestMessage = userDTO.TargetUserRequestMessage;
-            this.NickName = userDTO.User;
-            this.ProfilePicture = userDTO.Picture != null ?Convert.FromBase64String(userDTO.Picture): null;
-            this.UserUuid = userDTO.Uuid;
+
         }
     }
 }

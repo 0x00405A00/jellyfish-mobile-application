@@ -5,6 +5,7 @@ using MobileApp.Validation;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Shared.DataTransferObject;
+using Shared.Infrastructure.Backend.Api;
 
 namespace MobileApp.ViewModel
 {
@@ -117,7 +118,7 @@ namespace MobileApp.ViewModel
         }
         private readonly ApplicationConfigHandler _applicationConfigHandler;
         private readonly NavigationService _navigationService;
-        private readonly JellyfishWebApiRestClient _webApiRestClient;
+        private readonly JellyfishBackendApi _webApiRestClient;
         public ICommand SubmitCommand { get; private set; }
         public ICommand ReturnToLoginCommand { get; private set; }
         public ICommand ValidateByValueChangeCommand { get; private set; }
@@ -126,7 +127,7 @@ namespace MobileApp.ViewModel
         public ICommand SendNewActivationCodeCommand { get; private set; }
         public RegisterContentPageViewModel(
             ApplicationConfigHandler applicationConfigHandler,
-            JellyfishWebApiRestClient webApiRestClient,
+            JellyfishBackendApi webApiRestClient,
             NavigationService navigationService)
         {
             _applicationConfigHandler = applicationConfigHandler;
@@ -155,15 +156,7 @@ namespace MobileApp.ViewModel
             if (!validateCode)
                 return;
 
-            var responseFromActivation = await _webApiRestClient.Activate(ActivationToken, new RegisterUserDTO { ActivationCode = (FullActivationCode) }, _webApiActionCancelationToken.Token);
-            if (responseFromActivation.IsSuccess)
-            {
 
-                _applicationConfigHandler.ApplicationConfig.AccountConfig.RegisterBase64Token = null;
-                _applicationConfigHandler.Safe();
-                ActivationToken = null;
-                IsActivated = true;
-            }
         }
         private void ResendActivationMailAction()
         {
@@ -201,32 +194,11 @@ namespace MobileApp.ViewModel
                 RegisterUserDTO registerDataTransferModel = new RegisterUserDTO();
                 registerDataTransferModel.FirstName = Firstname.Value;
                 registerDataTransferModel.LastName =Lastname.Value;
-                registerDataTransferModel.EMail =Email.Value;
+                registerDataTransferModel.Email =Email.Value;
                 registerDataTransferModel.DateOfBirth =DateOfBirth.Value;
                 registerDataTransferModel.Phone =PhonePrefix.Value+Phone.Value;
                 registerDataTransferModel.Password =Password.Value;
-                if (resend)
-                    registerDataTransferModel.ResendActivationCode = true;
 
-                var responseFromRegister = await _webApiRestClient.Register(registerDataTransferModel, _webApiActionCancelationToken.Token);
-                if(responseFromRegister.IsSuccess)
-                {
-                    IsNowScuccessfullyRegistered = true;
-                    ActivationToken = responseFromRegister.ApiResponseDeserialized.data.First().attributes.ActivateTokenBase64;//initial bei kürzlichem register wird der token auf dem user gerät gespeichert bis zum application close um die aktivierung in der app möglich zu machen, andernfalls geht es nur über den link in der mail
-                    //abgleich token+code = activate
-                    _applicationConfigHandler.ApplicationConfig.AccountConfig.RegisterBase64Token = ActivationToken;
-                    _applicationConfigHandler.Safe();
-                }
-                else if (responseFromRegister.DefaultResponse.StatusCode == System.Net.HttpStatusCode.Gone)//registered but no activated
-                {
-                    IsNowScuccessfullyRegistered = true;
-
-                }
-                else if (responseFromRegister.DefaultResponse.StatusCode == System.Net.HttpStatusCode.Forbidden)//already registered
-                {
-
-
-                }
             }
             IsLoading = false;
         }

@@ -1,9 +1,9 @@
 ﻿using MobileApp.Controls;
 using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Backend.Communication.WebApi;
 using MobileApp.Service;
 using MobileApp.Validation;
 using MobileApp.View;
+using Shared.Infrastructure.Backend.Api;
 using System.Windows.Input;
 
 namespace MobileApp.ViewModel
@@ -12,7 +12,7 @@ namespace MobileApp.ViewModel
     {
         private readonly ResetPasswordContentPageViewModel _resetPasswordContentPageViewModel;
         private readonly RegisterContentPageViewModel _registerContentPageViewModel;
-        private readonly JellyfishWebApiRestClient _webApiRestClient;
+        private readonly JellyfishBackendApi _webApiRestClient;
         private readonly ApplicationConfigHandler _applicationConfigHandler;
         private readonly NavigationService _navigationService;
         private readonly MainPageViewModel _mainPageViewModel;
@@ -53,7 +53,7 @@ namespace MobileApp.ViewModel
             MainPageViewModel mainPageViewModel,
             NavigationService navigationService,
             ApplicationConfigHandler applicationConfigHandler,
-            JellyfishWebApiRestClient webApiRestClient)
+            JellyfishBackendApi webApiRestClient)
         {
             _resetPasswordContentPageViewModel = resetPasswordContentPageViewModel;
             _registerContentPageViewModel = registerContentPageViewModel;   
@@ -133,7 +133,6 @@ namespace MobileApp.ViewModel
             }
 
 
-            _applicationConfigHandler.ApplicationConfig.AccountConfig.UserSession = new AuthModel(response);
             _applicationConfigHandler.Safe();
             LoggedIn();
         }

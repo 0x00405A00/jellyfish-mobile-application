@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using MobileApp.Data.AppConfig.Abstraction;
+﻿using Microsoft.Maui.Controls.Shapes;
 using MobileApp.Data.AppConfig.ConcreteImplements;
 using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Backend.Communication.WebApi;
 using MobileApp.Handler.Device.Media;
 using MobileApp.Model;
 using MobileApp.Service;
 using MobileApp.View.SettingsSubPages;
 using MobileApp.ViewModel.SettingsSubPage;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.Shapes;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MobileApp.ViewModel
 {
@@ -102,14 +93,7 @@ namespace MobileApp.ViewModel
             {
                 this.UserFriendInvitesList.Clear();
             }
-            var responseOwnProfile = await _internalDataInterceptorApplication.GetOwnProfile(CancellationToken.None);
 
-            var getUserFriendshipRequest = await _internalDataInterceptorApplication.GetFriendshipRequests(CancellationToken.None);
-            foreach ( var userFriendship in getUserFriendshipRequest)
-            {
-
-                this.UserFriendInvitesList.Add(new UserFriendshipRequest(userFriendship));
-            }
 
             OnPropertyChanged(nameof(UserFriendInvitesList));
             OnPropertyChanged(nameof(HasUserFriendInvites));
@@ -119,21 +103,7 @@ namespace MobileApp.ViewModel
         private async void AcceptFriendshipInviteAction(UserFriendshipRequest user)
         {
 
-            var acceptUserFriendshipRequest = await _internalDataInterceptorApplication.AcceptFriendRequest(user.RequestUuid,CancellationToken.None);
-            if(acceptUserFriendshipRequest.IsSuccess)
-            {
-                if(acceptUserFriendshipRequest.ApiResponseDeserialized.data!=null)
-                {
-                    var d = acceptUserFriendshipRequest.ApiResponseDeserialized.data.ToList();
-                    if(d.Find(x => x.attributes.Uuid == user.UserUuid) != null)
-                    {
 
-                        UserFriendInvitesList.Remove(user);
-                        OnPropertyChanged(nameof(UserFriendInvitesList));
-                        OnPropertyChanged(nameof(HasUserFriendInvites));
-                    }
-                }
-            }
 
 
         }

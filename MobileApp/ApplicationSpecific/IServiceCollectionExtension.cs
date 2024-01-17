@@ -1,31 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MobileApp.Handler.Data;
-using MobileApp.Data.SqlLite.Schema;
+﻿using MobileApp.Handler.Data;
 using MobileApp.ViewModel;
 using MobileApp.Handler.Device.Vibrate;
 using MobileApp.Handler.Device.Media.Camera;
 using MobileApp.Handler.Device.Media.Contact;
-using MobileApp.Handler.Device.Media.Audio;
 using MobileApp.Handler.Device.Media.Communication;
 using MobileApp.Handler.Device.Notification;
 using MobileApp.Handler.Device.Filesystem;
 using MobileApp.Handler.Device.Sensor;
 using MobileApp.Handler.Device.ClipBoard;
 using MobileApp.Handler.Device.Network;
-using MobileApp.Handler.Backend.Communication.WebApi;
-using MobileApp.Handler.Backend.Communication.SignalR;
-using Microsoft.Maui.Handlers;
 using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
 using MobileApp.Handler.Data.InternalDataInterceptor.Invoker;
 using MobileApp.Handler.Device.Media;
 using CommunityToolkit.Maui;
 using MobileApp.Handler.Data.InternalDataInterceptor;
-using Microsoft.Extensions.DependencyInjection;
+using Shared.Infrastructure.Backend.Api;
+using Shared.Infrastructure.Backend.SignalR;
+
+
 #if ANDROID
 using MobileApp.Handler.Data.InternalDataInterceptor.Invoker.Notification.Android;
 #elif IOS
@@ -79,7 +71,7 @@ namespace MobileApp.ApplicationSpecific
             services.AddSingleton<ClipBoardHandler>(new ClipBoardHandler());
             services.AddSingleton<NetworkingHandler>(new NetworkingHandler(() => { }, () => { }));
 
-            var jellyfishBackendClient = new JellyfishWebApiRestClient(applicationHandler);
+            /*var jellyfishBackendClient = new JellyfishBackendApi(applicationHandler);
             string loginSessionEndpoint = WebApiEndpointStruct.LoginSessionEndpoint;
             string logoutSessionEndpoint = WebApiEndpointStruct.LogoutSessionEndpoint;
             string validateSessionEndpoint = WebApiEndpointStruct.ValidateSessionEndpoint;
@@ -96,8 +88,8 @@ namespace MobileApp.ApplicationSpecific
                 logoutSessionEndpoint,
                 validateSessionEndpoint,
                 refreshSessionEndpoint,
-                connectionTestEndpoint);
-            services.AddSingleton<JellyfishWebApiRestClient>(jellyfishBackendClient);
+                connectionTestEndpoint);*/
+            services.AddSingleton<JellyfishBackendApi>();
 
             services.AddSingleton<JellyfishWebApiRestClientInvoker>();
             services.AddSingleton<ViewModelInvoker>();

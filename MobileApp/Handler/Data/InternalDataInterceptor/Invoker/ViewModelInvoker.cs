@@ -35,7 +35,8 @@ namespace MobileApp.Handler.Data.InternalDataInterceptor.Invoker
 
         public Task ReceiveMessage(params MessageDTO[] data)
         {
-            List<MessageDTO> messages =  data.ToList();
+            /*
+             List<MessageDTO> messages =  data.ToList();
             messages.ForEach(message =>
             {
                 MainThread.InvokeOnMainThreadAsync(() =>
@@ -74,6 +75,7 @@ namespace MobileApp.Handler.Data.InternalDataInterceptor.Invoker
                     NotificationHandler.ToastNotify(message.Text);
                 });
             });
+             */
             return Task.CompletedTask;
         }
 

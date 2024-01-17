@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net7.0-ios;net7.0-android33.0</TargetFrameworks>
+    <TargetFrameworks>net8.0-android</TargetFrameworks>
     <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
     <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
     <OutputType>Exe</OutputType>
@@ -22,7 +22,7 @@
     <ApplicationVersion>1</ApplicationVersion>
 
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">33.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">34.0</SupportedOSPlatformVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
     <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
@@ -49,7 +49,7 @@
     <ApplicationId>net.roos-it.jellyfish</ApplicationId>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android34.0|AnyCPU'">
     <ApplicationTitle>Jellyfish</ApplicationTitle>
     <ApplicationId>net.roos-it.jellyfish</ApplicationId>
   </PropertyGroup>
@@ -111,14 +111,13 @@
 
   <ItemGroup>
     <PackageReference Include="Camera.MAUI" Version="1.4.4" />
-    <PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
-    <PackageReference Include="CommunityToolkit.Maui.Markup" Version="3.1.0" />
-    <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="1.0.2" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.5" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.81" />
-    <PackageReference Include="Microsoft.Maui.Maps" Version="7.0.81" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
+    <PackageReference Include="CommunityToolkit.Maui.Markup" Version="4.0.0" />
+    <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.0.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.3" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.61" />
     <PackageReference Include="sqlite-net-base" Version="1.8.116" />
@@ -129,7 +128,7 @@
     <PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
     <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
     <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.4" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -222,7 +221,7 @@
     </MauiXaml>
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android33.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android34.0'">
     <PackageReference Include="Xamarin.AndroidX.Media">
       <Version>1.6.0.3</Version>
     </PackageReference>
@@ -232,17 +231,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Handler\Backend\Communication\" />
     <Folder Include="Handler\Device\Cache\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Application.Shared.Kernel">
-      <HintPath>..\..\generic-aspnet-webapi\Application.Shared.Kernel\bin\Debug\net7.0\Application.Shared.Kernel.dll</HintPath>
+    <Reference Include="Shared">
+      <HintPath>..\..\jellyfish-backend-ddd\Shared\bin\Backend\net8.0\Shared.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -1,36 +1,23 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using Microsoft.Extensions.DependencyInjection;
-using MobileApp.ControlExtension;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using MobileApp.Controls;
+using MobileApp.Handler.AppConfig;
+using MobileApp.Handler.Data;
+using MobileApp.Handler.Device.Media.Contact;
+using MobileApp.Handler.Device.Vibrate;
 using MobileApp.Model;
 using MobileApp.Service;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using MobileApp.View;
-using MobileApp.Handler.Data;
-using MobileApp.Data.SqlLite.Schema;
-using MobileApp.ApplicationSpecific;
-using MobileApp.Handler.Device.Vibrate;
-using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Device.Media.Contact;
-using CommunityToolkit.Mvvm.Messaging;
-using MobileApp.Controls;
-using MobileApp.Handler.Backend.Communication.SignalR;
-using SQLiteNetExtensionsAsync.Extensions;
-using MobileApp.Handler.Backend.Communication.WebApi;
+using Shared.Infrastructure.Backend.Api;
+using Shared.Infrastructure.Backend.SignalR;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MobileApp.ViewModel
 {
 
     public class MainPageViewModel : BaseViewModel
     {
-        private readonly JellyfishWebApiRestClient _jellyfishWebApiRestClient;
+        private readonly JellyfishBackendApi _jellyfishWebApiRestClient;
         private readonly SettingsPageViewModel _settingsPageViewModel;
         private readonly ApplicationConfigHandler _applicationConfigHandler;
         private readonly NavigationService _navigationService;
@@ -149,7 +136,7 @@ namespace MobileApp.ViewModel
         public MainPageViewModel(IServiceProvider serviceProvider,
             SettingsPageViewModel settingsPageViewModel,
             VibrateHandler vibrateHandler,
-            JellyfishWebApiRestClient jellyfishWebApiRestClient,
+            JellyfishBackendApi jellyfishWebApiRestClient,
             JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler,
             NavigationService navigationService,
             ChatsPageViewModel chatsPageViewModel,

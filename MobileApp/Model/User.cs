@@ -131,16 +131,11 @@ namespace MobileApp.Model
         }
         public User(MessengerUserDTO userDTO)
         {
-            this.NickName = userDTO.User;
-            this.ProfilePicture = userDTO.Picture != null ? Convert.FromBase64String(userDTO.Picture) : null;
-            this.UserUuid = userDTO.Uuid;
+
         }
         public User(UserEntity userEntity)
         {
-            this.NickName = userEntity.NickName;
-            this.ProfilePicture = userEntity.ProfilePicture;
-            this.UserId = userEntity.UserId;
-            this.UserUuid = userEntity.UserUuidValue;
+
         }
     }
 }

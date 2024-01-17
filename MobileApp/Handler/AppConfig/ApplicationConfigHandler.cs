@@ -1,5 +1,6 @@
 ﻿using MobileApp.ApplicationSpecific;
 using MobileApp.Data.AppConfig;
+using System.Text.Json;
 
 namespace MobileApp.Handler.AppConfig
 {
@@ -44,10 +45,7 @@ namespace MobileApp.Handler.AppConfig
                 string jsonContentFromFile = File.ReadAllText(ConfigPath);
                 if(jsonContentFromFile != null && !String.IsNullOrEmpty(jsonContentFromFile))
                 {
-                    using(JsonHandler json = new JsonHandler())
-                    {
-                        applicationConfig = json.JsonDeserialize<ApplicationConfig>(jsonContentFromFile);
-                    }
+                    applicationConfig = JsonSerializer.Deserialize<ApplicationConfig>(jsonContentFromFile);
                 }
                 else
                 {
@@ -65,12 +63,9 @@ namespace MobileApp.Handler.AppConfig
         {
             try
             {
-                using (JsonHandler json = new JsonHandler())
-                {
-                    string jsonStr = json.JsonSerialize<ApplicationConfig>(applicationConfig == null? ApplicationConfig:applicationConfig);
-                    File.WriteAllText(ConfigPath, jsonStr);
-                    return true;
-                }
+                string jsonStr = JsonSerializer.Serialize<ApplicationConfig>(applicationConfig == null ? ApplicationConfig : applicationConfig);
+                File.WriteAllText(ConfigPath, jsonStr);
+                return true;
             }
             catch (Exception ex)
             {
