@@ -16,6 +16,10 @@ using CommunityToolkit.Maui;
 using MobileApp.Handler.Data.InternalDataInterceptor;
 using Shared.Infrastructure.Backend.Api;
 using Shared.Infrastructure.Backend.SignalR;
+using Shared.Infrastructure.Backend;
+using MobileApp.Handler;
+
+
 
 
 #if ANDROID
@@ -58,6 +62,8 @@ namespace MobileApp.ApplicationSpecific
         }
         public static IServiceCollection AddDeviceHandlers(this IServiceCollection services,ApplicationConfigHandler applicationHandler)
         {
+            services.AddSingleton<ILocalStorageService, LocalStorageService>();
+            services.AddSingleton<ICustomAuthentificationStateProvider, CustomAuthentificationStateProvider>();
             services.AddSingleton<ApplicationResourcesHandler>();
             services.AddSingleton<FileHandler>(new FileHandler(() => { }, () => { }));
             services.AddSingleton<VibrateHandler>(new VibrateHandler(() => { }, () => { }));
@@ -89,7 +95,7 @@ namespace MobileApp.ApplicationSpecific
                 validateSessionEndpoint,
                 refreshSessionEndpoint,
                 connectionTestEndpoint);*/
-            services.AddSingleton<JellyfishBackendApi>();
+            //services.AddSingleton<JellyfishBackendApi>();
 
             services.AddSingleton<JellyfishWebApiRestClientInvoker>();
             services.AddSingleton<ViewModelInvoker>();
@@ -103,7 +109,8 @@ namespace MobileApp.ApplicationSpecific
                 throw new ArgumentNullException(nameof(InternalDataInterceptorApplication) + " not found in DI or " + nameof(AddDeviceHandlers) + " is called before initialization of " + nameof(InternalDataInterceptorApplication) + "");
             }
             services.AddSingleton<InitDataInterceptorApplicationModel>();
-            services.AddSingleton<SignalRClient>();
+            /*var signalrClient = new SignalRClient();
+            services.AddSingleton<>();*/
 
 
 

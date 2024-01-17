@@ -12,7 +12,6 @@ namespace MobileApp.ViewModel
     {
         private readonly ResetPasswordContentPageViewModel _resetPasswordContentPageViewModel;
         private readonly RegisterContentPageViewModel _registerContentPageViewModel;
-        private readonly JellyfishBackendApi _webApiRestClient;
         private readonly ApplicationConfigHandler _applicationConfigHandler;
         private readonly NavigationService _navigationService;
         private readonly MainPageViewModel _mainPageViewModel;
@@ -52,12 +51,10 @@ namespace MobileApp.ViewModel
             RegisterContentPageViewModel registerContentPageViewModel,
             MainPageViewModel mainPageViewModel,
             NavigationService navigationService,
-            ApplicationConfigHandler applicationConfigHandler,
-            JellyfishBackendApi webApiRestClient)
+            ApplicationConfigHandler applicationConfigHandler)
         {
             _resetPasswordContentPageViewModel = resetPasswordContentPageViewModel;
             _registerContentPageViewModel = registerContentPageViewModel;   
-            _webApiRestClient = webApiRestClient;
             _applicationConfigHandler = applicationConfigHandler;   
             _navigationService = navigationService;
             _mainPageViewModel = mainPageViewModel; 
@@ -78,11 +75,6 @@ namespace MobileApp.ViewModel
         }
         private async void CheckBackendConnection()
         {
-            bool resp = await _webApiRestClient.ConnectionTest(_webApiActionCancelationToken.Token);
-            if (!resp)
-            {
-                _applicationConfigHandler.ApplicationConfig.NetworkConfig.SetDefaults();    
-            }
         }
         private void SetAccountCredentialsFromConfig()
         {
@@ -124,13 +116,13 @@ namespace MobileApp.ViewModel
             }
 
             IsLoading = true;
-            var response = await _webApiRestClient.Authentificate(Email.Value, Password.Value, _webApiActionCancelationToken.Token);
+            //var response = await _webApiRestClient.Authentificate(Email.Value, Password.Value, _webApiActionCancelationToken.Token);
             IsLoading = false;
-            if (response == null)
+            /*if (response == null)
             {
                 NotificationHandler.ToastNotify("No internet: check your connection.");
                 return;
-            }
+            }*/
 
 
             _applicationConfigHandler.Safe();

@@ -17,11 +17,9 @@ namespace MobileApp.ViewModel
 
     public class MainPageViewModel : BaseViewModel
     {
-        private readonly JellyfishBackendApi _jellyfishWebApiRestClient;
         private readonly SettingsPageViewModel _settingsPageViewModel;
         private readonly ApplicationConfigHandler _applicationConfigHandler;
         private readonly NavigationService _navigationService;
-        private readonly SignalRClient _signalRClient;
         private readonly IServiceProvider _serviceProvider;
         private readonly DeviceContactHandler _deviceContactHandler;
         private readonly JellyfishSqlliteDatabaseHandler _jellyfishSqlliteDatabaseHandler;
@@ -136,21 +134,17 @@ namespace MobileApp.ViewModel
         public MainPageViewModel(IServiceProvider serviceProvider,
             SettingsPageViewModel settingsPageViewModel,
             VibrateHandler vibrateHandler,
-            JellyfishBackendApi jellyfishWebApiRestClient,
             JellyfishSqlliteDatabaseHandler jellyfishSqlliteDatabaseHandler,
             NavigationService navigationService,
             ChatsPageViewModel chatsPageViewModel,
             StatusPageViewModel statusPageViewModel,
             CallsPageViewModel callsPageViewModel,
             DeviceContactHandler deviceContactHandler,
-            ApplicationConfigHandler applicationConfigHandler,
-            SignalRClient signalRClient) : base()
+            ApplicationConfigHandler applicationConfigHandler) : base()
         {
             _settingsPageViewModel = settingsPageViewModel;
-            _jellyfishWebApiRestClient = jellyfishWebApiRestClient;
             _jellyfishSqlliteDatabaseHandler = jellyfishSqlliteDatabaseHandler;
             _applicationConfigHandler = applicationConfigHandler;
-            _signalRClient = signalRClient; 
             _deviceContactHandler = deviceContactHandler;
             ChatsPageViewModel = chatsPageViewModel;
             StatusPageViewModel = statusPageViewModel;
@@ -180,8 +174,6 @@ namespace MobileApp.ViewModel
         public async void LoadViewCommandAction()
         {
 
-            _signalRClient.BuildConnection();
-            _signalRClient.OpenConnection();
         }
 
         public override void SignalrReconnectedAction()

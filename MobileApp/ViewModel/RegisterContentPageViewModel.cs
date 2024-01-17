@@ -118,7 +118,6 @@ namespace MobileApp.ViewModel
         }
         private readonly ApplicationConfigHandler _applicationConfigHandler;
         private readonly NavigationService _navigationService;
-        private readonly JellyfishBackendApi _webApiRestClient;
         public ICommand SubmitCommand { get; private set; }
         public ICommand ReturnToLoginCommand { get; private set; }
         public ICommand ValidateByValueChangeCommand { get; private set; }
@@ -127,12 +126,10 @@ namespace MobileApp.ViewModel
         public ICommand SendNewActivationCodeCommand { get; private set; }
         public RegisterContentPageViewModel(
             ApplicationConfigHandler applicationConfigHandler,
-            JellyfishBackendApi webApiRestClient,
             NavigationService navigationService)
         {
             _applicationConfigHandler = applicationConfigHandler;
             _navigationService  = navigationService;    
-            _webApiRestClient = webApiRestClient;
             _languages.Add(new LanguageModel { Country = "Deutschland", PhonePrefix = "+49" });
             _languages.Add(new LanguageModel { Country = "Österrreich", PhonePrefix = "+48" });
             AddValidations();

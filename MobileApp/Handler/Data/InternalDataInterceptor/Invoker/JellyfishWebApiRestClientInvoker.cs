@@ -7,10 +7,9 @@ namespace MobileApp.Handler.Data.InternalDataInterceptor.Invoker
 {
     public class JellyfishWebApiRestClientInvoker : IInternalDataInterceptorApplicationInvoker
     {
-        private readonly JellyfishBackendApi _jellyfishWebApiRestClient;
-        public JellyfishWebApiRestClientInvoker(JellyfishBackendApi jellyfishWebApiRestClient)
+        public JellyfishWebApiRestClientInvoker()
         {
-            _jellyfishWebApiRestClient = jellyfishWebApiRestClient;
+
         }
         public Task CreateFriendRequest(params UserFriendshipRequestDTO[] data)
         {

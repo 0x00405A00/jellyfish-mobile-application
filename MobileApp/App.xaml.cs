@@ -13,8 +13,6 @@ namespace MobileApp
     {
         private CancellationTokenSource _webApiActionCancelationToken = new CancellationTokenSource();
         public App(
-            SignalRClient signalRClient,
-            JellyfishBackendApi jellyfishWebApiRestClient,
             ApplicationConfigHandler applicationConfigHandler,
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,
@@ -25,13 +23,11 @@ namespace MobileApp
             InitializeComponent();
             Page viewPage = new NavigationPage(new LoginPage(loginPageViewModel));
             MainPage = viewPage;
-            Load(signalRClient,jellyfishWebApiRestClient, applicationConfigHandler, loginPageViewModel, mainPageViewModel, navigationService, jellyfishSqlliteDatabaseHandler, applicationResourcesHandler);
+            Load(applicationConfigHandler, loginPageViewModel, mainPageViewModel, navigationService, jellyfishSqlliteDatabaseHandler, applicationResourcesHandler);
 
         }
         public static Dictionary<string, ResourceDictionary> ResourceDictionary;
         public async Task Load(
-            SignalRClient signalRClient,
-            JellyfishBackendApi jellyfishWebApiRestClient,
             ApplicationConfigHandler applicationConfigHandler,
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,

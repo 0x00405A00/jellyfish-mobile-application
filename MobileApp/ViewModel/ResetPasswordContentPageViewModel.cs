@@ -96,12 +96,10 @@ namespace MobileApp.ViewModel
         public ICommand SubmitPasswordActionCommand { get; private set; }
         public ICommand ValidateByValueChangeCommand { get; private set; }
         private readonly NavigationService _navigationService;
-        private readonly JellyfishBackendApi _jellyfishWebApiRestClient;
 
-        public ResetPasswordContentPageViewModel(JellyfishBackendApi jellyfishWebApiRestClient,NavigationService navigationService)
+        public ResetPasswordContentPageViewModel(NavigationService navigationService)
         {
             _navigationService = navigationService;
-            _jellyfishWebApiRestClient = jellyfishWebApiRestClient;
             SubmitActionCommand = new RelayCommand(SubmitAction);//1. Action
             SubmitCodeActionCommand = new RelayCommand(SubmitCodeAction);//2. Action
             SubmitPasswordActionCommand = new RelayCommand(SubmitPasswordAction);//3. Action
@@ -143,7 +141,7 @@ namespace MobileApp.ViewModel
             if (validEntries)
             {
                 BlockBackSwitch = true;
-                var response = await _jellyfishWebApiRestClient.ResetPasswordRequest(new PasswordResetRequestDTO { Email = this.Email.Value }, _webApiActionCancelationToken.Token);
+                /*var response = await _jellyfishWebApiRestClient.ResetPasswordRequest(new PasswordResetRequestDTO { Email = this.Email.Value }, _webApiActionCancelationToken.Token);
                 if(!response.IsSuccess)
                 {
                     NotificationHandler.ToastNotify("Error: The request is not okay.");
@@ -152,7 +150,7 @@ namespace MobileApp.ViewModel
                 {
                     IsRequestSent = true;
 
-                }
+                }*/
 
             }
             IsLoading = false;
@@ -166,7 +164,7 @@ namespace MobileApp.ViewModel
             if (IsSecureCodeValid)
             {
                 //send to backend and processing the result
-                var response = await _jellyfishWebApiRestClient.ResetPassword(new PasswordResetDataTransferModel { PasswordResetCode = this.SecureCodeConcat }, _webApiActionCancelationToken.Token);
+                /*var response = await _jellyfishWebApiRestClient.ResetPassword(new PasswordResetDataTransferModel { PasswordResetCode = this.SecureCodeConcat }, _webApiActionCancelationToken.Token);
                 if(!response.IsSuccess)
                 {
 
@@ -175,7 +173,7 @@ namespace MobileApp.ViewModel
                 else
                 {
                     IsCodeSentToBackendForVerify = true;
-                }
+                }*/
                 //when codes invalid show common errors in ui
             }
             IsLoading = false;
@@ -190,7 +188,7 @@ namespace MobileApp.ViewModel
             if (validPasswordEntries)
             {
                 //send to backend and processing the result
-                var response = await _jellyfishWebApiRestClient.ResetPassword(new PasswordResetDataTransferModel { Password = Password.Value, PasswordResetCode = SecureCodeConcat },_webApiActionCancelationToken.Token);
+                /*var response = await _jellyfishWebApiRestClient.ResetPassword(new PasswordResetDataTransferModel { Password = Password.Value, PasswordResetCode = SecureCodeConcat },_webApiActionCancelationToken.Token);
                 if(!response.IsSuccess)
                 {
                     NotificationHandler.ToastNotify("Error: The request is not okay.");
@@ -198,7 +196,7 @@ namespace MobileApp.ViewModel
                 else
                 {
                     _navigationService.CloseCurrentPage();
-                }
+                }*/
             }
             IsLoading = false;
         }
