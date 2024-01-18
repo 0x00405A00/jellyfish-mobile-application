@@ -9,7 +9,7 @@
              xmlns:vm="clr-namespace:Presentation.ViewModel"
              xmlns:view="clr-namespace:Presentation.View"
              xmlns:model="clr-namespace:Presentation.Model"
-             xmlns:local="clr-namespace:MobileApp" 
+             xmlns:local="clr-namespace:Presentation" 
                                 
              NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False" 
                                  customcontrol:BlockBackButtonAction="{Binding BlockBackSwitch}" 
@@ -346,11 +346,12 @@
         </AbsoluteLayout>
         <view:ChatsPage 
             BindingContext="{Binding ChatsPageViewModel,Mode=TwoWay}"
-            ZIndex="0"
+            ZIndex="1"
             Grid.Column="0"
             Grid.Row="1"
-            Grid.RowSpan="2"
-            >
+            IsVisible="true"
+            BackgroundColor="Black"
+            Grid.RowSpan="2">
 
         </view:ChatsPage>
         <view:StatusPage 
@@ -358,6 +359,7 @@
             ZIndex="1"
             Grid.Column="0"
             Grid.Row="1"
+            IsVisible="false"
             Grid.RowSpan="2">
 
         </view:StatusPage>
@@ -367,6 +369,7 @@
             ZIndex="2"
             Grid.Column="0"
             Grid.Row="1"
+            IsVisible="false"
             Grid.RowSpan="2">
 
         </view:CallsPage>

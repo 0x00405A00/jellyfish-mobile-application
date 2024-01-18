@@ -5,7 +5,7 @@
              x:Class="Presentation.View.StatusPage"
              IsVisible="{Binding SelectedView}">
     <VerticalStackLayout HeightRequest="400" WidthRequest="400">
-        <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Work in Progress, available soon..." FontAttributes="Bold" FontSize="16" TextColor="{DynamicResource Primary}"></Label>
+        <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Work in Progress, available soon (Status)..." FontAttributes="Bold" FontSize="16" TextColor="{DynamicResource Primary}"></Label>
         <skia:SKLottieView
                               Source="workinprogress.json"
                               RepeatCount="-1" 

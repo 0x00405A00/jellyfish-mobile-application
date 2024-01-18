@@ -95,7 +95,6 @@ namespace Presentation.ViewModel
                 _selectedViewTemplate = value;
                 value.IsSelected = true;    
 
-                OnPropertyChanged(nameof(SelectedViewTemplate));
                 if(value.ContentViewModelType == typeof(ChatsPageViewModel))
                 {
                     this.ChatsPageViewModel.SelectedView = true;
@@ -116,6 +115,7 @@ namespace Presentation.ViewModel
                     this.StatusPageViewModel.SelectedView = false;
                     this.ChatsPageViewModel.SelectedView = false;
                 }
+                OnPropertyChanged(nameof(SelectedViewTemplate));
             }
         }
         public ViewTemplateModel[] ViewTemplates

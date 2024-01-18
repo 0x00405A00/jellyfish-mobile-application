@@ -9,9 +9,9 @@
              xmlns:vm="clr-namespace:Presentation.ViewModel"
              xmlns:model="clr-namespace:Presentation.Model"
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
-             xmlns:local="clr-namespace:MobileApp"
+             xmlns:local="clr-namespace:Presentation"
              x:Name="ChatsPageView"
-             IsVisible="{Binding SelectedView}">
+             IsVisible="true">
     <ContentView.Resources>
         <converter:ValueThrouthputConverter x:Key="ValueThrouthputConverter"></converter:ValueThrouthputConverter>
         <converter:BoolInvertConverter x:Key="BoolInvertConverter"></converter:BoolInvertConverter>
@@ -22,7 +22,9 @@
             <Label HorizontalOptions="Center" VerticalOptions="Center" Text="No chats..."></Label>
         </DataTemplate>
         <DataTemplate x:Key="ChatTemplate">
-            <SwipeView>
+            <SwipeView
+                VerticalOptions="Fill" 
+                HorizontalOptions="Fill" >
 
                 <SwipeView.LeftItems>
                     <SwipeItem Text="Delete" BackgroundColor="Red" Command="{Binding Source={x:Reference ChatsPageView},Path=BindingContext.DeleteChatCommand}" CommandParameter="{Binding}"></SwipeItem>
@@ -91,7 +93,6 @@
         HorizontalOptions="Fill">
         
         <CollectionView 
-            
             x:Name="Chats"
             ItemsSource="{Binding Chats,Mode=TwoWay}" 
             ItemTemplate="{StaticResource ChatTemplate}" 
