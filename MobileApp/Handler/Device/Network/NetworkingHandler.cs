@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.Handler.Abstraction;
+using Infrastructure.Handler.Abstraction;
 using Perms = Microsoft.Maui.ApplicationModel;
 
-namespace MobileApp.Handler.Device.Network
+namespace Infrastructure.Handler.Device.Network
 {
     public class NetworkingHandler : AbstractDeviceActionHandler<Permissions.NetworkState>
     {

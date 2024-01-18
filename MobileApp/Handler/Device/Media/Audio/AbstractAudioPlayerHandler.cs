@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.Handler.Abstraction;
+using Infrastructure.Handler.Abstraction;
 using AppModel = Microsoft.Maui.ApplicationModel;
 
-namespace MobileApp.Handler.Device.Media.Audio
+namespace Infrastructure.Handler.Device.Media.Audio
 {
 
     public abstract class AbstractAudioPlayerHandler : AbstractDeviceActionHandler<Permissions.Microphone, Permissions.StorageRead, Permissions.StorageWrite>, IAudioPlayer

@@ -1,4 +1,4 @@
-namespace MobileApp;
+namespace Presentation;
 
 public partial class AppShell : Shell
 {

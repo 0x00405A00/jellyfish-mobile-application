@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace MobileApp.Validation
+namespace Presentation.Validation
 {
     public class IsNotNullOrEmptyRule : IValidationRule<string>
     {

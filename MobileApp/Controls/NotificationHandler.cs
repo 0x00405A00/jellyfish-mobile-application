@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Controls
+namespace Presentation.Controls
 {
     public static class NotificationHandler
 

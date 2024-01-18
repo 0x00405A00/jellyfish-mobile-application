@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Linq;
-using MobileApp.Model;
+using Presentation.Model;
 
 /* Nicht gemergte Änderung aus Projekt "MobileApp (net7.0-ios)"
 Vor:
@@ -13,7 +13,7 @@ using System.Collections.ObjectModel;
 Nach:
 using System.Collections.ObjectModel;
 using MobileApp;
-using MobileApp.ControlExtension;
+using Presentation.ControlExtension;
 */
 
 /* Nicht gemergte Änderung aus Projekt "MobileApp (net7.0-ios)"
@@ -22,13 +22,13 @@ using System.Collections.ObjectModel;
 Nach:
 using System.Collections.ObjectModel;
 using MobileApp;
-using MobileApp.ControlExtension;
-using MobileApp.Behaviour;
+using Presentation.ControlExtension;
+using Presentation.Behaviour;
 */
 using System.Collections.ObjectModel;
-using MobileApp.ControlExtension;
+using Presentation.ControlExtension;
 
-namespace MobileApp.Behaviour
+namespace Presentation.Behaviour
 {
     public static class CollectionViewControlsBehaviour
     {

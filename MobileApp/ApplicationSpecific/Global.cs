@@ -1,4 +1,4 @@
-﻿namespace MobileApp.ApplicationSpecific
+﻿namespace Presentation.ApplicationSpecific
 {
     public static class Global
     {

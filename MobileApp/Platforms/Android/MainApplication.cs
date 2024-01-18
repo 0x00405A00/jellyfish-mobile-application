@@ -22,7 +22,7 @@ using Android.Media;
 [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
 [assembly: UsesPermission(Android.Manifest.Permission.RecordAudio)]
 
-namespace MobileApp
+namespace Presentation
 {
 #if DEBUG                                 
     [Application(UsesCleartextTraffic = true)]  

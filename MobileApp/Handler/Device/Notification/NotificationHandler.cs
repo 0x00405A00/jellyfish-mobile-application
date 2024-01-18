@@ -1,4 +1,4 @@
-﻿using MobileApp.Handler.Abstraction;
+﻿using Infrastructure.Handler.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Handler.Device.Notification
+namespace Infrastructure.Handler.Device.Notification
 {
     public class NotificationHandler : AbstractDeviceActionHandler<Permissions.LaunchApp>
     {

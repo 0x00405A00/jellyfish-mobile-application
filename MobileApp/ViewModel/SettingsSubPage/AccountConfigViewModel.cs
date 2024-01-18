@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.Attribute;
-using MobileApp.Data.AppConfig.Abstraction;
-using MobileApp.Validation;
-using MobileApp.ViewModel.SettingsSubPage;
+using Presentation.Attribute;
+using Presentation.Data.AppConfig.Abstraction;
+using Presentation.Validation;
+using Presentation.ViewModel.SettingsSubPage;
 
-namespace MobileApp.Data.AppConfig.ConcreteImplements
+namespace Presentation.Data.AppConfig.ConcreteImplements
 {
     public class AccountConfigViewModel : AbstractConfigViewModel<AccountConfig>
     {

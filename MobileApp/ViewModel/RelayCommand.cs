@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class RelayCommand<T> : ICommand
     {

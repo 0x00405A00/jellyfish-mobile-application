@@ -1,7 +1,7 @@
-using MobileApp.Controls;
-using MobileApp.Service;
+using Presentation.Controls;
+using Presentation.Service;
 
-namespace MobileApp.View;
+namespace Presentation.View;
 
 public partial class ProfilePage : CustomContentPage
 {

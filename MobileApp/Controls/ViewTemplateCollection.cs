@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.Controls
+namespace Presentation.Controls
 {
     public class ViewTemplateCollection : CollectionView
     {

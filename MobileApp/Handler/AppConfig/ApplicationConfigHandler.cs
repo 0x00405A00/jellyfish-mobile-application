@@ -1,8 +1,8 @@
-﻿using MobileApp.ApplicationSpecific;
-using MobileApp.Data.AppConfig;
+﻿using Presentation.ApplicationSpecific;
+using Presentation.Data.AppConfig;
 using System.Text.Json;
 
-namespace MobileApp.Handler.AppConfig
+namespace Infrastructure.Handler.AppConfig
 {
     public static class ApplicationConfigHandlerSingleton
     {

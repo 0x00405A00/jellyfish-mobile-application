@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace MobileApp.Data.SqlLite.Schema
+namespace Presentation.Data.SqlLite.Schema
 {
     public class UserEntity : AbstractEntity
     {

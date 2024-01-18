@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Converter
+namespace Presentation.Converter
 {
     public class CounterBindingControlVisibilityBehavoir : IValueConverter
     {

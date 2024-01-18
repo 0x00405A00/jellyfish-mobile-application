@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Handler.Device.Extension
+namespace Infrastructure.Handler.Device.Extension
 {
     public static class StreamExtension
     {

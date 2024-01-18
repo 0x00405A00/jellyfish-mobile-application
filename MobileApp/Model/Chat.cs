@@ -1,7 +1,7 @@
-﻿using MobileApp.ViewModel;
+﻿using Presentation.ViewModel;
 using System.Collections.ObjectModel;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
     public class Chat : BaseViewModel
     {

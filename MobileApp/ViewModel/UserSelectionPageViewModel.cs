@@ -1,16 +1,14 @@
 ﻿//#define SAMPLE_DATA
 using CommunityToolkit.Mvvm.Messaging;
-using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Data.InternalDataInterceptor;
-using MobileApp.Model;
-using MobileApp.Service;
+using Infrastructure.Handler.AppConfig;
+using Infrastructure.Handler.Data.InternalDataInterceptor;
+using Presentation.Model;
+using Presentation.Service;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
-using Shared.DataTransferObject.Messenger;
-using Shared.DataTransferObject;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class UserSelectionPageViewModel : BaseViewModel
     {

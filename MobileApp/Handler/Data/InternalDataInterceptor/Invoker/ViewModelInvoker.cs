@@ -1,11 +1,11 @@
-﻿using MobileApp.ControlExtension;
-using MobileApp.Controls;
-using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
-using MobileApp.Model;
-using MobileApp.ViewModel;
+﻿using Presentation.ControlExtension;
+using Presentation.Controls;
+using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
+using Presentation.Model;
+using Presentation.ViewModel;
 using Shared.DataTransferObject.Messenger;
 
-namespace MobileApp.Handler.Data.InternalDataInterceptor.Invoker
+namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker
 {
     public class ViewModelInvoker : IInternalDataInterceptorApplicationInvoker
     {

@@ -1,7 +1,7 @@
 ﻿using SQLite;
 using SQLiteNetExtensions.Attributes;
 
-namespace MobileApp.Data.SqlLite.Schema
+namespace Presentation.Data.SqlLite.Schema
 {
     [SQLite.Table("message")]
     public class MessageEntity : AbstractEntity

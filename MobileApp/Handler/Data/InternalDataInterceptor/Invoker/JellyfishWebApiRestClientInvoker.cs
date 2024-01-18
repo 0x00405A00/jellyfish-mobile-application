@@ -1,9 +1,9 @@
-﻿using MobileApp.Controls;
-using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
+﻿using Presentation.Controls;
+using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
 using Shared.DataTransferObject.Messenger;
 using Shared.Infrastructure.Backend.Api;
 
-namespace MobileApp.Handler.Data.InternalDataInterceptor.Invoker
+namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker
 {
     public class JellyfishWebApiRestClientInvoker : IInternalDataInterceptorApplicationInvoker
     {

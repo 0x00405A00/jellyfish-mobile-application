@@ -1,12 +1,12 @@
-using MobileApp.Controls;
-using MobileApp.ViewModel;
+using Presentation.Controls;
+using Presentation.ViewModel;
 using System.Windows.Input;
 using Camera.MAUI;
 using ImageFormat = Camera.MAUI.ImageFormat;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Extensions.Logging;
 
-namespace MobileApp.View;
+namespace Presentation.View;
 
 public partial class CameraHandlerPage : CustomContentPage, IDisposable
 {

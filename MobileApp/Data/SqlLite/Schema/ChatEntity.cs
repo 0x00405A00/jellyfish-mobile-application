@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
 
-namespace MobileApp.Data.SqlLite.Schema
+namespace Presentation.Data.SqlLite.Schema
 {
     [SQLite.Table("chat")]
     public class ChatEntity : AbstractEntity

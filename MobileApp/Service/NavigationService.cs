@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Service
+namespace Presentation.Service
 {
 
     public class NavigationService : INavigation

@@ -1,4 +1,4 @@
-﻿using MobileApp.Data.AppConfig.Ui;
+﻿using Presentation.Data.AppConfig.Ui;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel.SettingsSubPage
+namespace Presentation.ViewModel.SettingsSubPage
 {
     public abstract class AbstractSettingsPageGenericViewModel: BaseViewModel
     {

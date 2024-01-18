@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.Data.AppConfig.Abstraction;
-using MobileApp.ViewModel.SettingsSubPage;
+using Presentation.Data.AppConfig.Abstraction;
+using Presentation.ViewModel.SettingsSubPage;
 
-namespace MobileApp.Data.AppConfig.ConcreteImplements
+namespace Presentation.Data.AppConfig.ConcreteImplements
 {
     public class NotificationConfigViewModel : AbstractConfigViewModel<NotificationConfig>
     {

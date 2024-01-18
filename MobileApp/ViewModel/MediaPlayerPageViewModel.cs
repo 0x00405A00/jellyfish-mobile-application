@@ -1,4 +1,4 @@
-﻿using MobileApp.Model;
+﻿using Presentation.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class MediaPlayerPageViewModel : BaseViewModel
     {

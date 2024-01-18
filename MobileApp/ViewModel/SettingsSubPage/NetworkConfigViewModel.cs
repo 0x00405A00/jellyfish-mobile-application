@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using MobileApp.Attribute;
-using MobileApp.Data.AppConfig.Abstraction;
-using MobileApp.Validation;
-using MobileApp.ViewModel.SettingsSubPage;
+using Presentation.Attribute;
+using Presentation.Data.AppConfig.Abstraction;
+using Presentation.Validation;
+using Presentation.ViewModel.SettingsSubPage;
 
-namespace MobileApp.Data.AppConfig.ConcreteImplements
+namespace Presentation.Data.AppConfig.ConcreteImplements
 {
     public class NetworkConfigViewModel : AbstractConfigViewModel<NetworkConfig>
     {

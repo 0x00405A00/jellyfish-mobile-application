@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Data.SqlLite.Schema
+namespace Presentation.Data.SqlLite.Schema
 {
     //Keyvalues in Databasetable ergeben sich aus 'MajorVersion' & 'MinorVersion'
     public sealed class DatabaseVersionEntity : AbstractEntity

@@ -1,7 +1,7 @@
-﻿using MobileApp.ViewModel;
+﻿using Presentation.ViewModel;
 using Shared.DataTransferObject.Messenger;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
     public class User :BaseViewModel
     {

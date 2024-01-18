@@ -1,10 +1,10 @@
-using MobileApp.ControlExtension;
-using MobileApp.Controls;
-using MobileApp.Model;
-using MobileApp.Service;
-using MobileApp.ViewModel;
+using Presentation.ControlExtension;
+using Presentation.Controls;
+using Presentation.Model;
+using Presentation.Service;
+using Presentation.ViewModel;
 
-namespace MobileApp;
+namespace Presentation;
 
 public partial class ChatPage : CustomContentPage
 {

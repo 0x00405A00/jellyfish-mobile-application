@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Markup;
-using MobileApp.Validation;
-using MobileApp.ViewModel;
+using Presentation.Validation;
+using Presentation.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.Data.AppConfig.Ui
+namespace Presentation.Data.AppConfig.Ui
 {
     public class ApplicationConfigPropertyDescriptorViewModel : BaseViewModel
     {

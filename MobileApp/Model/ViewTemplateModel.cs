@@ -1,5 +1,5 @@
-﻿using MobileApp.View;
-using MobileApp.ViewModel;
+﻿using Presentation.View;
+using Presentation.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
     public abstract class ViewTemplateModel : BaseViewModel
     {

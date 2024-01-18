@@ -1,8 +1,8 @@
-﻿using MobileApp.ViewModel;
+﻿using Presentation.ViewModel;
 using Shared.DataTransferObject.Messenger;
 using System.Text.RegularExpressions;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
 
     public class Message : BaseViewModel

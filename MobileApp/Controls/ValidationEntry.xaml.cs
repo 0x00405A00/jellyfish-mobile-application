@@ -1,8 +1,8 @@
 using Microsoft.Maui.Controls.Shapes;
-using MobileApp.Validation;
+using Presentation.Validation;
 using System.Windows.Input;
 
-namespace MobileApp.Controls;
+namespace Presentation.Controls;
 
 public partial class ValidationEntry : ContentView
 {

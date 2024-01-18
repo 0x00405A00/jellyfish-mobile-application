@@ -1,6 +1,6 @@
 ﻿using Shared.DataTransferObject.Messenger;
 
-namespace MobileApp.Handler.Data.InternalDataInterceptor.Abstraction
+namespace Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction
 {
     public interface IInternalDataInterceptorApplication
     {

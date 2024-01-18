@@ -1,13 +1,13 @@
 using CommunityToolkit.Maui.Markup;
 using Microsoft.Maui.Controls;
-using MobileApp.Controls;
-using MobileApp.Service;
-using MobileApp.ViewModel;
+using Presentation.Controls;
+using Presentation.Service;
+using Presentation.ViewModel;
 using SkiaSharp.Extended.UI.Controls;
 using System;
 
 
-namespace MobileApp.View;
+namespace Presentation.View;
 
 public partial class LoginPage : CustomContentPage
 {

@@ -5,10 +5,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.Handler.Abstraction;
+using Infrastructure.Handler.Abstraction;
 using Vibrate = Microsoft.Maui.ApplicationModel;
 
-namespace MobileApp.Handler.Device.Vibrate
+namespace Infrastructure.Handler.Device.Vibrate
 {
     public class VibrateHandler : AbstractDeviceActionHandler<Permissions.Vibrate>
     {

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure.Handler.Device.Media.Audio;
 using Xamarin.Essentials;
 
-namespace MobileApp.Handler.Device.Media.Audio.Android
+namespace Infrastructure.Handler.Device.Media.Audio.Android
 {
     public class AudioPlayerHandler : AbstractAudioPlayerHandler
     {

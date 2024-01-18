@@ -5,15 +5,15 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.Controls;
-using MobileApp.Handler.Abstraction;
-using MobileApp.Handler.Device.Extension;
-using MobileApp.Service;
-using MobileApp.View;
-using MobileApp.ViewModel;
+using Infrastructure.Handler.Device.Extension;
+using Presentation.Controls;
+using Infrastructure.Handler.Abstraction;
+using Presentation.Service;
+using Presentation.View;
+using Presentation.ViewModel;
 using AppModel = Microsoft.Maui.ApplicationModel;
 
-namespace MobileApp.Handler.Device.Media.Camera
+namespace Infrastructure.Handler.Device.Media.Camera
 {
     public class CameraHandler : AbstractDeviceActionHandler<Permissions.Camera, Permissions.StorageRead, Permissions.StorageWrite>
     {

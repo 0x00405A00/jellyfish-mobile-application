@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Media;
 
-namespace MobileApp.Handler.Device.Media.Audio.iOS
+namespace Infrastructure.Handler.Device.Media.Audio.iOS
 {
     public class AudioPlayerHandler
     {

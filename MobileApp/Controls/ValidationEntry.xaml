@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:view="clr-namespace:MobileApp.View"
-             xmlns:converter="clr-namespace:MobileApp.Converter"
+             xmlns:view="clr-namespace:Presentation.View"
+             xmlns:converter="clr-namespace:Presentation.Converter"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
-             x:Class="MobileApp.Controls.ValidationEntry">
+             x:Class="Presentation.Controls.ValidationEntry">
     <ContentView.Resources>
         <converter:BoolInvertConverter x:Key="BoolInvertConverter"></converter:BoolInvertConverter>
         <converter:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"></converter:FirstValidationErrorConverter>

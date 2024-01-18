@@ -1,12 +1,12 @@
-﻿using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
-using MobileApp.Handler.Data.InternalDataInterceptor.Invoker;
+﻿using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
+using Infrastructure.Handler.Data.InternalDataInterceptor.Invoker;
 using Shared.DataTransferObject.Messenger;
 #if ANDROID
-using MobileApp.Handler.Data.InternalDataInterceptor.Invoker.Notification.Android;
+using Infrastructure.Handler.Data.InternalDataInterceptor.Invoker.Notification.Android;
 #else
 #endif
 
-namespace MobileApp.Handler.Data.InternalDataInterceptor
+namespace Infrastructure.Handler.Data.InternalDataInterceptor
 {
     public class InternalDataInterceptorApplication : IInternalDataInterceptorApplication
     {

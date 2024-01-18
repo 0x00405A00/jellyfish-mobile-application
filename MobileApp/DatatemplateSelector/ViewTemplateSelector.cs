@@ -1,12 +1,12 @@
-﻿using MobileApp.Model;
-using MobileApp.ViewModel;
+﻿using Presentation.Model;
+using Presentation.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.DatatemplateSelector
+namespace Presentation.DatatemplateSelector
 {
     public class ViewTemplateSelector : DataTemplateSelector
     {

@@ -1,7 +1,7 @@
-﻿using MobileApp.Data.AppConfig.Abstraction;
-using MobileApp.Model;
+﻿using Presentation.Data.AppConfig.Abstraction;
+using Presentation.Model;
 
-namespace MobileApp.Data.AppConfig.ConcreteImplements
+namespace Presentation.Data.AppConfig.ConcreteImplements
 {
     public class AccountConfig : AbstractApplicationConfig
     {

@@ -1,7 +1,7 @@
-﻿using MobileApp.Attribute;
-using MobileApp.Data.AppConfig.Abstraction;
-using MobileApp.Data.AppConfig.Ui;
-using MobileApp.Validation;
+﻿using Presentation.Attribute;
+using Presentation.Data.AppConfig.Abstraction;
+using Presentation.Data.AppConfig.Ui;
+using Presentation.Validation;
 using Microsoft.Maui.Platform;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.ViewModel.SettingsSubPage
+namespace Presentation.ViewModel.SettingsSubPage
 {
     public abstract class AbstractConfigViewModel<T>
         where T : AbstractApplicationConfig, new()
@@ -41,7 +41,7 @@ namespace MobileApp.ViewModel.SettingsSubPage
         public abstract void Safe();
         public abstract void AddValidations();
 
-        public ObservableCollection<ApplicationConfigPropertyDescriptorViewModel> GetInstanceValuesWithUiDisplayNames(MobileApp.Validation.ValidatableObject.ChangedData changedData)
+        public ObservableCollection<ApplicationConfigPropertyDescriptorViewModel> GetInstanceValuesWithUiDisplayNames(Presentation.Validation.ValidatableObject.ChangedData changedData)
         {
             ObservableCollection<ApplicationConfigPropertyDescriptorViewModel> propValues = new ObservableCollection<ApplicationConfigPropertyDescriptorViewModel>();
             var props = this.GetType().GetProperties();

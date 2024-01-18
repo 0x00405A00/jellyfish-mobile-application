@@ -1,31 +1,18 @@
-﻿using Microsoft.Maui.ApplicationModel;
-//using Plugin.LocalNotification;
+﻿//using Plugin.LocalNotification;
 //using Plugin.LocalNotification.AndroidOption;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.ApplicationModel.Communication;
-using Microsoft.Maui.Controls.Shapes;
-using MobileApp.Model;
-using MobileApp.ControlExtension;
 using CommunityToolkit.Mvvm.Messaging;
-using MobileApp.Service;
-using MobileApp.Handler.Device.Media.Camera;
-using MobileApp.View;
-using MobileApp.Handler.Device.Extension;
-using MobileApp.Controls;
-using CommunityToolkit.Mvvm.Input;
-using MobileApp.Handler.Device.Sensor;
-using MobileApp.Handler.Device.Media.Contact;
+using Infrastructure.Handler.Device.Media.Camera;
+using Infrastructure.Handler.Device.Media.Contact;
+using Infrastructure.Handler.Device.Sensor;
+using Presentation.ControlExtension;
+using Presentation.Controls;
+using Presentation.Model;
+using Presentation.Service;
+using Presentation.View;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class ChatPageViewModel : BaseViewModel
     {

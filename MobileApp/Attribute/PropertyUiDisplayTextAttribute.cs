@@ -1,11 +1,11 @@
-﻿using MobileApp.Validation;
+﻿using Presentation.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Attribute
+namespace Presentation.Attribute
 {
     [System.AttributeUsage(AttributeTargets.Property| AttributeTargets.Field, AllowMultiple =false,Inherited =false)]
     public class PropertyUiDisplayTextAttribute : System.Attribute

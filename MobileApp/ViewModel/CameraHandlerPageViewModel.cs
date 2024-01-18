@@ -16,12 +16,12 @@ using System.Threading.Tasks;
 using System.Windows.Markup;
 using System.Collections.Specialized;
 using CommunityToolkit.Maui.Views;
-using MobileApp.Service;
+using Presentation.Service;
 using SkiaSharp;
-using MobileApp.Model;
+using Presentation.Model;
 using System.Timers;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class CameraHandlerPageViewModel : BaseViewModel
     {

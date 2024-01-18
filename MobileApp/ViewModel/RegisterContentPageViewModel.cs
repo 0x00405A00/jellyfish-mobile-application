@@ -1,13 +1,12 @@
-﻿using MobileApp.Handler.AppConfig;
-using MobileApp.Model;
-using MobileApp.Service;
-using MobileApp.Validation;
+﻿using Infrastructure.Handler.AppConfig;
+using Presentation.Model;
+using Presentation.Service;
+using Presentation.Validation;
+using Shared.DataTransferObject;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Shared.DataTransferObject;
-using Shared.Infrastructure.Backend.Api;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class RegisterContentPageViewModel : BaseViewModel
     {

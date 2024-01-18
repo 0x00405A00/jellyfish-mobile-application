@@ -1,11 +1,11 @@
-﻿using MobileApp.Controls;
-using MobileApp.Service;
-using MobileApp.Validation;
+﻿using Presentation.Controls;
+using Presentation.Service;
+using Presentation.Validation;
 using Shared.DataTransferObject;
 using Shared.Infrastructure.Backend.Api;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class ResetPasswordContentPageViewModel : BaseViewModel
     {

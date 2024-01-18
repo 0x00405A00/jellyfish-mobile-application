@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace MobileApp.Data.SqlLite.Schema
+namespace Presentation.Data.SqlLite.Schema
 {
     public class AbstractEntity
     {

@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Communication = Microsoft.Maui.ApplicationModel.Communication;
-using MobileApp.Model;
+using Presentation.Model;
 using Perms = Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.ApplicationModel.Communication;
-using MobileApp.Handler.Abstraction;
+using Infrastructure.Handler.Abstraction;
 using System.Runtime.CompilerServices;
-using MobileApp.Service;
-using MobileApp.ViewModel;
-using MobileApp.View;
-using MobileApp.Controls;
+using Presentation.Service;
+using Presentation.ViewModel;
+using Presentation.View;
+using Presentation.Controls;
 using System.Reflection;
 
-namespace MobileApp.Handler.Device.Media.Contact
+namespace Infrastructure.Handler.Device.Media.Contact
 {
     public class DeviceContactHandler : AbstractDeviceActionHandler<Permissions.ContactsRead>
     {

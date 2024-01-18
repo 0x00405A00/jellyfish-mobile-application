@@ -1,4 +1,4 @@
-﻿using MobileApp.Controls;
+﻿using Presentation.Controls;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls.Compatibility;
 using System;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using static Microsoft.Maui.ApplicationModel.Permissions;
 using Perms = Microsoft.Maui.ApplicationModel;
 
-namespace MobileApp.Handler.Abstraction
+namespace Infrastructure.Handler.Abstraction
 {
     public abstract class AbstractDeviceActionHandler
     {

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure.Handler.Device.Media.Audio;
 
-namespace MobileApp.Handler.Device.Media.Audio.iOS
+namespace Infrastructure.Handler.Device.Media.Audio.iOS
 {
     public class AudioRecorderHandler : AbstractAudioRecorderHandler
     {

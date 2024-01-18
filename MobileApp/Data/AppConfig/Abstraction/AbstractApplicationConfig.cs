@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace MobileApp.Data.AppConfig.Abstraction
+namespace Presentation.Data.AppConfig.Abstraction
 {
     [Serializable]
     public abstract class AbstractApplicationConfig : INotifyPropertyChanged

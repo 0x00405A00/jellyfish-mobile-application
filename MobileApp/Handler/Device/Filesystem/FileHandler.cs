@@ -1,5 +1,5 @@
-﻿using MobileApp.ApplicationSpecific;
-using MobileApp.Handler.Abstraction;
+﻿using Presentation.ApplicationSpecific;
+using Infrastructure.Handler.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Handler.Device.Filesystem
+namespace Infrastructure.Handler.Device.Filesystem
 {
     public class FileHandler : AbstractDeviceActionHandler<Permissions.StorageRead, Permissions.StorageWrite>
     {

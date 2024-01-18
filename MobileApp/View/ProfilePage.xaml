@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <customcontrol:CustomContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileApp.View.ProfilePage"
-             xmlns:customcontrol="clr-namespace:MobileApp.Controls"
+             x:Class="Presentation.View.ProfilePage"
+             xmlns:customcontrol="clr-namespace:Presentation.Controls"
              NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False"
              Title="ProfilePage">
     <VerticalStackLayout>

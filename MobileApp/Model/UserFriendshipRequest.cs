@@ -1,6 +1,6 @@
-﻿using MobileApp.ViewModel;
+﻿using Presentation.ViewModel;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
     public class UserFriendshipRequest : BaseViewModel
     {

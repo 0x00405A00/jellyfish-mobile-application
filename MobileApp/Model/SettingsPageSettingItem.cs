@@ -1,4 +1,4 @@
-﻿using MobileApp.ViewModel;
+﻿using Presentation.ViewModel;
 using Microsoft.Maui.Controls.Shapes;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
     public class SettingsPageSettingItem : BaseViewModel
     {

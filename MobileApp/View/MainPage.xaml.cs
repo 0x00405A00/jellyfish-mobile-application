@@ -1,8 +1,8 @@
-﻿using MobileApp.Controls;
-using MobileApp.Service;
-using MobileApp.ViewModel;
+﻿using Presentation.Controls;
+using Presentation.Service;
+using Presentation.ViewModel;
 
-namespace MobileApp
+namespace Presentation
 {
     public partial class MainPage : CustomContentPage
     {

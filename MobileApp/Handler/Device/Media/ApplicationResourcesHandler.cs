@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Handler.Device.Media
+namespace Infrastructure.Handler.Device.Media
 {
     public class ApplicationResourcesHandler
     {

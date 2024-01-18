@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Data.SqlLite.Schema
+namespace Presentation.Data.SqlLite.Schema
 {
     [SQLite.Table("users_related_to_chats")]
     public class UserLinkChatEntity : AbstractEntity

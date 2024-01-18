@@ -1,4 +1,4 @@
-namespace MobileApp.View.SettingsSubPages;
+namespace Presentation.View.SettingsSubPages;
 
 public partial class SettingsPageGeneric : ContentPage
 {

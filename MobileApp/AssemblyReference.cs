@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace MobileApp
+namespace Presentation
 {
     public static class AssemblyReference
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.ControlExtension
+namespace Presentation.ControlExtension
 {
     public static class StringToPathGeometry
     {

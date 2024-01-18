@@ -1,12 +1,10 @@
-﻿using MobileApp.Controls;
-using MobileApp.Handler.AppConfig;
-using MobileApp.Service;
-using MobileApp.Validation;
-using MobileApp.View;
-using Shared.Infrastructure.Backend.Api;
+﻿using Infrastructure.Handler.AppConfig;
+using Presentation.Service;
+using Presentation.Validation;
+using Presentation.View;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class LoginPageViewModel : BaseViewModel
     {

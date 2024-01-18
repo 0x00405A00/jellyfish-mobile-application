@@ -2,7 +2,7 @@
 using Shared.Infrastructure.Backend;
 using Shared.Infrastructure.Backend.Api;
 
-namespace MobileApp.Handler
+namespace Infrastructure.Handler
 {
     public class CustomAuthentificationStateProvider : ICustomAuthentificationStateProvider
     {

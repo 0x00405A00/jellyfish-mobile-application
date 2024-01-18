@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Handler.Data.InternalDataInterceptor.Abstraction
+namespace Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction
 {
     public interface IInternalDataInterceptor
     {

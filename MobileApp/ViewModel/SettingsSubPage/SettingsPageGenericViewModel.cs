@@ -1,22 +1,11 @@
-﻿using MobileApp.Data.AppConfig.Abstraction;
-using MobileApp.Data.AppConfig.Ui;
-using MobileApp.Handler.AppConfig;
-using MobileApp.Service;
-using Microsoft.Maui.Controls;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using Infrastructure.Handler.AppConfig;
+using Presentation.Controls;
+using Presentation.Data.AppConfig.Abstraction;
+using Presentation.Service;
+using Presentation.Validation;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Core;
-using MobileApp.Validation;
-using MobileApp.Controls;
 
-namespace MobileApp.ViewModel.SettingsSubPage
+namespace Presentation.ViewModel.SettingsSubPage
 {
     public class SettingsPageGenericViewModel<T2,T> : AbstractSettingsPageGenericViewModel
         where T2 : AbstractApplicationConfig, new()

@@ -1,18 +1,18 @@
 ﻿#define SAMPLE_DATA
 using CommunityToolkit.Maui.Core.Extensions;
-using MobileApp.ControlExtension;
-using MobileApp.Controls;
-using MobileApp.Model;
-using MobileApp.Service;
+using Presentation.ControlExtension;
+using Presentation.Controls;
+using Presentation.Model;
+using Presentation.Service;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class ChatsPageViewModel : BaseViewModel
     {
         private readonly NavigationService _navigationService;
-        private readonly MobileApp.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
+        private readonly Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
         private readonly IServiceProvider _serviceProvider;
         private ObservableCollection<Chat> _chats = new ObservableCollection<Chat>();
         public ObservableCollection<Chat> Chats
@@ -72,7 +72,7 @@ namespace MobileApp.ViewModel
 
         public ChatsPageViewModel(
             IServiceProvider serviceProvider,
-            MobileApp.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
+            Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
             NavigationService navigationService)
         {
             _internalDataInterceptorApplication = internalDataInterceptorApplication;   

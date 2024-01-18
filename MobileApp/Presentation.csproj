@@ -5,7 +5,7 @@
     <!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
      -->
     <OutputType>Exe</OutputType>
-    <RootNamespace>MobileApp</RootNamespace>
+    <RootNamespace>Presentation</RootNamespace>
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -50,23 +50,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AndroidResource Remove="Handler\Data\old\**" />
-    <AndroidResource Remove="Handler\Device\Cache\**" />
     <Compile Remove="Data\Backend\**" />
-    <Compile Remove="Handler\Data\old\**" />
-    <Compile Remove="Handler\Device\Cache\**" />
     <EmbeddedResource Remove="Data\Backend\**" />
-    <EmbeddedResource Remove="Handler\Data\old\**" />
-    <EmbeddedResource Remove="Handler\Device\Cache\**" />
     <MauiCss Remove="Data\Backend\**" />
-    <MauiCss Remove="Handler\Data\old\**" />
-    <MauiCss Remove="Handler\Device\Cache\**" />
     <MauiXaml Remove="Data\Backend\**" />
-    <MauiXaml Remove="Handler\Data\old\**" />
-    <MauiXaml Remove="Handler\Device\Cache\**" />
     <None Remove="Data\Backend\**" />
-    <None Remove="Handler\Data\old\**" />
-    <None Remove="Handler\Device\Cache\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,7 +66,6 @@
     <Compile Remove="Data\SqlLite\Schema\MessageLocationEntity.cs" />
     <Compile Remove="Data\SqlLite\Schema\UserEntity.cs" />
     <Compile Remove="Data\SqlLite\Schema\UserLinkChatEntity.cs" />
-    <Compile Remove="Handler\Data\SqlLiteDatabaseHandler.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -112,12 +99,13 @@
     <PackageReference Include="CommunityToolkit.Maui.Markup" Version="4.0.0" />
     <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.0.1" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.6" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.86" />
     <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.ios" Version="2.1.7" />
@@ -232,6 +220,14 @@
     <PackageReference Include="SQLitePCLRaw.lib.e_sqlite3.android">
       <Version>2.1.7</Version>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.6" />
   </ItemGroup>
 
 </Project>

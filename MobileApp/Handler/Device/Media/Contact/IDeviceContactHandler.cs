@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Communication = Microsoft.Maui.ApplicationModel.Communication;
 
-namespace MobileApp.Handler.Device.Media.Contact
+namespace Infrastructure.Handler.Device.Media.Contact
 {
     public interface IDeviceContactHandler
     {

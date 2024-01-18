@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using MobileApp.ControlExtension;
-using MobileApp.Model;
-using MobileApp.Service;
+using Presentation.ControlExtension;
+using Presentation.Model;
+using Presentation.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
 
     public class StatusPageViewModel : BaseViewModel

@@ -1,10 +1,10 @@
-﻿using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Device.Media;
-using MobileApp.Service;
-using MobileApp.View;
-using MobileApp.ViewModel;
+﻿using Infrastructure.Handler.AppConfig;
+using Infrastructure.Handler.Device.Media;
+using Presentation.Service;
+using Presentation.View;
+using Presentation.ViewModel;
 
-namespace MobileApp
+namespace Presentation
 {
     public partial class App : Microsoft.Maui.Controls.Application
     {

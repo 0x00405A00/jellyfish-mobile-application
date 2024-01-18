@@ -1,15 +1,15 @@
-﻿using Microsoft.Maui.Controls.Shapes;
-using MobileApp.Data.AppConfig.ConcreteImplements;
-using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Device.Media;
-using MobileApp.Model;
-using MobileApp.Service;
-using MobileApp.View.SettingsSubPages;
-using MobileApp.ViewModel.SettingsSubPage;
+﻿using Infrastructure.Handler.AppConfig;
+using Infrastructure.Handler.Device.Media;
+using Microsoft.Maui.Controls.Shapes;
+using Presentation.Data.AppConfig.ConcreteImplements;
+using Presentation.Model;
+using Presentation.Service;
+using Presentation.View.SettingsSubPages;
+using Presentation.ViewModel.SettingsSubPage;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
     public class SettingsPageViewModel : BaseViewModel
     {
@@ -41,7 +41,7 @@ namespace MobileApp.ViewModel
         public bool HasUserFriendInvites { get => UserFriendInvitesList != null && UserFriendInvitesList.Count != 0; }
 
         private readonly ApplicationConfigHandler _applicationConfigHandler;
-        private readonly MobileApp.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
+        private readonly Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
         private readonly NavigationService _navigationService;
         public ICommand OpenAccountPage { get; private set; }
         public ICommand LoadedCommand { get; private set; }
@@ -52,7 +52,7 @@ namespace MobileApp.ViewModel
         private Dictionary<ICommand, AbstractSettingsPageGenericViewModel> _commandsToViewsRelation = new Dictionary<ICommand, AbstractSettingsPageGenericViewModel>();
         public ObservableCollection<SettingsPageSettingItem> SettingsPageSettingItems { get; set; }
         public SettingsPageViewModel(
-            MobileApp.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
+            Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
             NavigationService navigationService,
             ApplicationConfigHandler applicationConfigHandler,
             ApplicationResourcesHandler applicationResourcesHandler)

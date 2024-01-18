@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace MobileApp
+namespace Presentation
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

@@ -1,11 +1,11 @@
-﻿using MobileApp.ViewModel;
+﻿using Presentation.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
     public class LanguageModel : BaseViewModel
     {

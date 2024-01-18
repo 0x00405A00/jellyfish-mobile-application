@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Communication = Microsoft.Maui.ApplicationModel.Communication;
-using MobileApp.Model;
+using Presentation.Model;
 using System.Text.RegularExpressions;
-using MobileApp.Handler.Abstraction;
+using Infrastructure.Handler.Abstraction;
 using System.Runtime.CompilerServices;
 
-namespace MobileApp.Handler.Device.Media.Communication
+namespace Infrastructure.Handler.Device.Media.Communication
 {
     public class DeviceCommunicationHandler : AbstractDeviceActionHandler<Permissions.LaunchApp>
     {

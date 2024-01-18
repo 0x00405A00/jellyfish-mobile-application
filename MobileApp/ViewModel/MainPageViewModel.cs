@@ -1,15 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
-using MobileApp.Controls;
-using MobileApp.Handler.AppConfig;
-using MobileApp.Handler.Device.Media.Contact;
-using MobileApp.Handler.Device.Vibrate;
-using MobileApp.Model;
-using MobileApp.Service;
-using MobileApp.View;
+using Infrastructure.Handler.AppConfig;
+using Infrastructure.Handler.Device.Media.Contact;
+using Infrastructure.Handler.Device.Vibrate;
+using Presentation.Controls;
+using Presentation.Model;
+using Presentation.Service;
+using Presentation.View;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace MobileApp.ViewModel
+namespace Presentation.ViewModel
 {
 
     public class MainPageViewModel : BaseViewModel

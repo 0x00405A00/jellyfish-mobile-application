@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Handler.Device.Extension
+namespace Infrastructure.Handler.Device.Extension
 {
     public static class LocationExtension
     {
-        public static string ToGpsString(this Location location) 
+        public static string ToGpsString(this Location location)
         {
-            return (location.Latitude + location.Latitude + location.Altitude)+"";
+            return location.Latitude + location.Latitude + location.Altitude + "";
         }
     }
 }

@@ -1,7 +1,7 @@
 using Microsoft.Maui.Controls.Shapes;
 using System.Windows.Input;
 
-namespace MobileApp.Controls;
+namespace Presentation.Controls;
 
 public partial class MenuListViewItem : ContentView
 {

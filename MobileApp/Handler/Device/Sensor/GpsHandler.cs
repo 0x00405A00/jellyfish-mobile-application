@@ -1,4 +1,4 @@
-﻿using MobileApp.Handler.Abstraction;
+﻿using Infrastructure.Handler.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Handler.Device.Sensor
+namespace Infrastructure.Handler.Device.Sensor
 {
     public class GpsHandler : AbstractDeviceActionHandler<Permissions.LocationWhenInUse,Permissions.LocationAlways> 
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
+using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
 
-namespace MobileApp.Handler.Data.InternalDataInterceptor
+namespace Infrastructure.Handler.Data.InternalDataInterceptor
 {
     public class InternalDataInterceptor : IInternalDataInterceptor
     {

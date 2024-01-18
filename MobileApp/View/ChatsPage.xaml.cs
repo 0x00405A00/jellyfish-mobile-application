@@ -1,4 +1,4 @@
-namespace MobileApp.View;
+namespace Presentation.View;
 
 public partial class ChatsPage : ContentView
 {

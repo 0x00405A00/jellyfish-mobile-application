@@ -1,21 +1,17 @@
-﻿using Camera.MAUI;
+﻿using Application;
+using Camera.MAUI;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Markup;
 using Infrastructure;
-using Microsoft.Extensions.Configuration;
+using Infrastructure.Extension;
+using Infrastructure.Handler.AppConfig;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
-using Microsoft.Maui.LifecycleEvents;
 using Microsoft.Maui.Platform;
-using MobileApp.ApplicationSpecific;
-using MobileApp.Handler.AppConfig;
-using MobileApp.Service;
+using Presentation.ApplicationSpecific;
 using SkiaSharp.Views.Maui.Controls.Hosting;
-using System.Reflection;
-/*using Plugin.LocalNotification;
-using Plugin.LocalNotification.AndroidOption;*/
 
-namespace MobileApp
+namespace Presentation
 {
     public static class MauiProgram
     {
@@ -44,65 +40,7 @@ namespace MobileApp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
-                .ConfigureLifecycleEvents(events => {
-
-#if ANDROID
-                    events.AddAndroid(android => android
-                        .OnDestroy(e => appConfigHandler.Safe()));//ApplicationExit Event like (wenn Handy Ressourcen selbst freigibt oder der User die App terminated)
-#elif IOS
-
-                    events.AddiOS(ios => ios
-                        .WillTerminate(del => appConfigHandler.Safe()));//ApplicationExit Event like (wenn Handy Ressourcen selbst freigibt oder der User die App terminated)
-#endif
-                })
-                /*.UseLocalNotification(config =>
-                {
-                    config.AddCategory(new NotificationCategory(NotificationCategoryType.Status)
-                    {
-                        ActionList = new HashSet<NotificationAction>(new List<NotificationAction>()
-                        {
-                            new NotificationAction(100)
-                            {
-                                Title = "Launch",
-                                Android =
-                                {
-                                    LaunchAppWhenTapped = true,
-                                    IconName =
-                                    {
-                                        ResourceName = "i2"
-                                    }
-                                }
-                            },
-                            new NotificationAction(101)
-                            {
-                                Title = "Close",
-                                Android =
-                                {
-                                     
-                                    LaunchAppWhenTapped = false,
-                                    IconName =
-                                    {
-                                        ResourceName = "i3"
-                                    }
-                                }
-                            }
-                        })
-                    })
-                    .AddAndroid(android =>
-                    {
-                        android.AddChannel(new NotificationChannelRequest
-                        {
-                            Sound = "good_things_happen"
-                        });
-                    })
-                    .AddiOS(iOS =>
-                    {
-#if IOS
-                    iOS.UseCustomDelegate = true;
-                    iOS.SetCustomUserNotificationCenterDelegate(new CustomUserNotificationCenterDelegate());
-#endif
-                    });
-                });*/ ;
+                .AddApplicationEvents(appConfigHandler);
 
 #if DEBUG
 		builder.Logging.AddDebug();
@@ -117,17 +55,10 @@ namespace MobileApp
 #endif
             builder.AddIConfiguration();
             builder.Services.AddSingleton(appConfigHandler);
-
-
             var fs = Directory.GetFiles(FileSystem.AppDataDirectory);
             builder.AddIConfiguration();
             builder.Services.AddInfrastructure();
-            //builder.Services.AddSqlLiteDatabase(Global.DatabasePath, Global.DatabaseFlags);
-
-            builder.Services.AddSingleton<NavigationService>();
-            builder.Services.AddDeviceHandlers(appConfigHandler);
-            builder.Services.AddViewModels();
-            builder.Services.AddPages();
+            builder.Services.AddPresentation(appConfigHandler);
             return builder.Build();
         }
 #if __ANDROID__//Fixxed bei einer CollectionView in der man Images auswählen kann folgenden Fehler: Canvas: trying to use a recycled bitmap

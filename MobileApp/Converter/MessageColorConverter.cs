@@ -1,4 +1,4 @@
-﻿using MobileApp.Model;
+﻿using Presentation.Model;
 using Microsoft.Maui.Graphics;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MobileApp.Converter
+namespace Presentation.Converter
 {
     public class MessageColorConverter : IValueConverter
     {

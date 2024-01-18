@@ -1,7 +1,7 @@
-﻿using MobileApp.Handler.Data.InternalDataInterceptor.Abstraction;
+﻿using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
 using Shared.DataTransferObject.Messenger;
 
-namespace MobileApp.Handler.Data.InternalDataInterceptor.Invoker.Notification
+namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker.Notification
 {
     public class PlatformIndependentNotificationInvoker : IInternalDataInterceptorApplicationInvoker
     {

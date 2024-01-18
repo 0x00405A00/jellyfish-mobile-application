@@ -1,6 +1,6 @@
-using MobileApp.Controls;
+using Presentation.Controls;
 
-namespace MobileApp.View;
+namespace Presentation.View;
 
 public partial class MediaPlayerPage : CustomContentPage
 {

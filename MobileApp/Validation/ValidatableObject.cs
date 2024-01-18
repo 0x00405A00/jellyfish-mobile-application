@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using MobileApp.ViewModel;
+using Presentation.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MobileApp.Validation
+namespace Presentation.Validation
 {
     public class ValidatableObject : BaseViewModel
     {
@@ -85,7 +85,7 @@ namespace MobileApp.Validation
         }
         public ValidatableObject()
         {
-            ValidateByValueChangeCommand = new MobileApp.ViewModel.RelayCommand(ValidateByValueChangeAction);
+            ValidateByValueChangeCommand = new Presentation.ViewModel.RelayCommand(ValidateByValueChangeAction);
         }
         public void ValidateByValueChangeAction()
         {

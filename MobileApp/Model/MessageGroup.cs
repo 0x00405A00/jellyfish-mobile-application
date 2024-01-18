@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
-namespace MobileApp.Model
+namespace Presentation.Model
 {
     public class MessageGroup : ObservableCollection<Message>
     {
