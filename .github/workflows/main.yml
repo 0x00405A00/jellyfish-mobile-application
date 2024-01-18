@@ -1,0 +1,33 @@
+name: Continous Integration
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  DOTNET_VERSION: "8.0.x"
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Restore Dependencies
+      run: dotnet restore ./JellyfishMobileApplication.sln 
+
+    - name: Build
+      run: dotnet build ./JellyfishMobileApplication.sln --configuration Backend --no-restore
+
+    - name: Test
+      run: dotnet test ./JellyfishMobileApplication.sln --configuration Backend --no-restore --no-build
