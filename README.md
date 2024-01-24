@@ -17,4 +17,4 @@ Wie funktioniert Jellyfish Messenger?
 
 
 ## VIDEO: Preview Preview with connection to old Backend: ##
-[![Preview Transitioning](https://github.com/0x00405A00/jellyfish-messenger/blob/main/MobileApp/Preview-Media/alpha-functionality-preview-thumbnail.png)](https://www.youtube.com/watch?v=w-ctzVEAvtM)
+[![Preview](https://github.com/0x00405A00/jellyfish-mobile-application/blob/master/MobileApp/Preview-Media/alpha-functionality-preview-thumbnail.png)](https://www.youtube.com/watch?v=w-ctzVEAvtM)
