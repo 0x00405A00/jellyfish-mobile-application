@@ -1,3 +1,5 @@
+<img src="https://github.com/0x00405A00/jellyfish-backend-ddd/blob/main/Presentation/Preview-Media/jellyfish_image.svg" align="right" height="256" width="256" />
+
 ## Jellyfish Messenger ##
 
 Dieses Projekt ist eine Messenger-Anwendung in C# .NET 7, mit einem Backend in ASP.NET Web API. Die Kommunikation zwischen dem Messenger und dem Backend erfolgt über eine RESTful API und SignalR. Das Frontend, Jellyfish Messenger, ist ausschließlich für Android und iOS verfügbar und wurde in .NET MAUI entwickelt. Das Projekt hat das Ziel, eine plattformübergreifende und sichere Messenger-Anwendung zu entwickeln, die mit verschiedenen Geräten und Betriebssystemen kompatibel ist.
