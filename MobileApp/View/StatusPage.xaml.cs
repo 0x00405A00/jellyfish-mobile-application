@@ -1,9 +1,12 @@
+using Presentation.ViewModel;
+
 namespace Presentation.View;
 
-public partial class StatusPage : ContentView
+public partial class StatusPage : ContentPage
 {
-	public StatusPage()
+	public StatusPage(StatusPageViewModel statusPageViewModel)
 	{
 		InitializeComponent();
+		BindingContext = statusPageViewModel;
 	}
 }

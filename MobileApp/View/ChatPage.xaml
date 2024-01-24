@@ -75,9 +75,9 @@
                                 </RoundRectangle>
                             </Border.StrokeShape>
                             <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
-                                <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, UWP=16}" />
+                                <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, WinUI=16}" />
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" >
-                                    <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, UWP=8}"></Label>
+                                    <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, WinUI=8}"></Label>
                                     <ActivityIndicator HorizontalOptions="End" HeightRequest="10" WidthRequest="10" IsVisible="{Binding SendToBackendActionProgressBar,Mode=OneWay}" IsRunning="{Binding SendToBackendActionProgressBar,Mode=OneWay}"></ActivityIndicator>
                                     <Grid>
                                         <Path ZIndex="1" Margin="-10,0,0,0" Data="{StaticResource SendToBackendSvg}" Stroke="{Binding ReceiverGetMessage,Mode=OneWay,Converter={StaticResource MessageStateColorConverter}}" StrokeMiterLimit="10" StrokeThickness="2" HeightRequest="20" WidthRequest="20">
@@ -156,9 +156,9 @@
                                 HeightRequest="200"
                                 WidthRequest="280"/>
                                 </StackLayout>
-                                <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, UWP=16}" />
+                                <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, WinUI=16}" />
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" >
-                                    <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, UWP=8}"></Label>
+                                    <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, WinUI=8}"></Label>
                                     <ActivityIndicator HorizontalOptions="End" HeightRequest="10" WidthRequest="10" IsVisible="{Binding SendToBackendActionProgressBar,Mode=OneWay}" IsRunning="{Binding SendToBackendActionProgressBar,Mode=OneWay}"></ActivityIndicator>
                                     <Grid>
                                         <Path ZIndex="1" Margin="-10,0,0,0" Data="{StaticResource SendToBackendSvg}" Stroke="#42B0FF" StrokeMiterLimit="10" StrokeThickness="2" HeightRequest="20" WidthRequest="20">
@@ -237,10 +237,10 @@
                                 WidthRequest="280"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
-                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding LocationStr}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=22}, iOS=10, UWP=10}" />
-                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, UWP=16}" />
+                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding LocationStr}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=22}, iOS=10, WinUI=10}" />
+                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, WinUI=16}" />
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" >
-                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, UWP=8}"></Label>
+                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, WinUI=8}"></Label>
                                         <ActivityIndicator HorizontalOptions="End" HeightRequest="10" WidthRequest="10" IsVisible="{Binding SendToBackendActionProgressBar,Mode=OneWay}" IsRunning="{Binding SendToBackendActionProgressBar,Mode=OneWay}"></ActivityIndicator>
                                         <Grid>
                                             <Path ZIndex="1" Margin="-10,0,0,0" Data="{StaticResource SendToBackendSvg}" Stroke="#42B0FF" StrokeMiterLimit="10" StrokeThickness="2" HeightRequest="20" WidthRequest="20">
@@ -328,9 +328,9 @@
                                                         FontAttributes="Bold"></Button>
                                 </Border>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
-                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, UWP=16}" />
+                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, WinUI=16}" />
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" >
-                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, UWP=8}"></Label>
+                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, WinUI=8}"></Label>
                                         <ActivityIndicator HorizontalOptions="End" HeightRequest="10" WidthRequest="10" IsVisible="{Binding SendToBackendActionProgressBar,Mode=OneWay}" IsRunning="{Binding SendToBackendActionProgressBar,Mode=OneWay}"></ActivityIndicator>
                                         <Grid>
                                             <Path ZIndex="1" Margin="-10,0,0,0" Data="{StaticResource SendToBackendSvg}" Stroke="#42B0FF" StrokeMiterLimit="10" StrokeThickness="2" HeightRequest="20" WidthRequest="20">
@@ -410,9 +410,9 @@
                                     </Image.GestureRecognizers>
                                 </Image>
                                 <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
-                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, UWP=16}" />
+                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, WinUI=16}" />
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" >
-                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, UWP=8}"></Label>
+                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, WinUI=8}"></Label>
                                         <ActivityIndicator HorizontalOptions="End" HeightRequest="10" WidthRequest="10" IsVisible="{Binding SendToBackendActionProgressBar,Mode=OneWay}" IsRunning="{Binding SendToBackendActionProgressBar,Mode=OneWay}"></ActivityIndicator>
                                         <Grid>
                                             <Path ZIndex="1" Margin="-10,0,0,0" Data="{StaticResource SendToBackendSvg}" Stroke="#42B0FF" StrokeMiterLimit="10" StrokeThickness="2" HeightRequest="20" WidthRequest="20">
@@ -483,13 +483,13 @@
                             <StackLayout Orientation="Vertical">
                                 <HorizontalStackLayout>
                                     <Path Data="{StaticResource icons8contactssvg}" HeightRequest="30" WidthRequest="30" Stroke="{StaticResource White}"></Path>
-                                    <Label Text="{Binding Contact.NickName}" IsVisible="{Binding IsContact}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, UWP=16}" />
+                                    <Label Text="{Binding Contact.NickName}" IsVisible="{Binding IsContact}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, WinUI=16}" />
 
                                 </HorizontalStackLayout>
                                 <StackLayout Orientation="Vertical">
-                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, UWP=16}" />
+                                    <Label MinimumWidthRequest="300" MaximumWidthRequest="300" Text="{Binding Text}" IsVisible="{Binding HasText}" Margin='{OnPlatform Default="5,5,5,5", Android="2,2,2,2"}' TextColor="#DE000000" FontSize="{OnPlatform Android={OnIdiom Phone=15, Tablet=22}, iOS=16, WinUI=16}" />
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" >
-                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, UWP=8}"></Label>
+                                        <Label HorizontalTextAlignment="End" Margin="5,5,5,5" Text="{Binding MessageDateTime,Converter={StaticResource DateTimeConvert}}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, WinUI=8}"></Label>
                                         <ActivityIndicator HorizontalOptions="End" HeightRequest="10" WidthRequest="10" IsVisible="{Binding SendToBackendActionProgressBar,Mode=OneWay}" IsRunning="{Binding SendToBackendActionProgressBar,Mode=OneWay}"></ActivityIndicator>
                                         <Grid>
                                             <Path ZIndex="1" Margin="-10,0,0,0" Data="{StaticResource SendToBackendSvg}" Stroke="#42B0FF" StrokeMiterLimit="10" StrokeThickness="2" HeightRequest="20" WidthRequest="20">
@@ -544,7 +544,7 @@
                             <RoundRectangle CornerRadius="10,10,10,10">
                             </RoundRectangle>
                         </Border.StrokeShape>
-                        <Label HorizontalTextAlignment="Center" Margin="5,5,5,5" Text="{Binding}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, UWP=8}"></Label>
+                        <Label HorizontalTextAlignment="Center" Margin="5,5,5,5" Text="{Binding}" FontSize="{OnPlatform Android={OnIdiom Phone=10, Tablet=10}, iOS=8, WinUI=8}"></Label>
                     </Border>
                 </FlexLayout>
                 <VisualStateManager.VisualStateGroups>

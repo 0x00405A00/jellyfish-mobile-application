@@ -344,34 +344,6 @@
                 </Grid>
             </Border>
         </AbsoluteLayout>
-        <view:ChatsPage 
-            BindingContext="{Binding ChatsPageViewModel,Mode=TwoWay}"
-            ZIndex="1"
-            Grid.Column="0"
-            Grid.Row="1"
-            IsVisible="true"
-            BackgroundColor="Black"
-            Grid.RowSpan="2">
-
-        </view:ChatsPage>
-        <view:StatusPage 
-            BindingContext="{Binding StatusPageViewModel,Mode=TwoWay}"
-            ZIndex="1"
-            Grid.Column="0"
-            Grid.Row="1"
-            IsVisible="false"
-            Grid.RowSpan="2">
-
-        </view:StatusPage>
-
-        <view:CallsPage 
-            BindingContext="{Binding CallsPageViewModel,Mode=TwoWay}"
-            ZIndex="2"
-            Grid.Column="0"
-            Grid.Row="1"
-            IsVisible="false"
-            Grid.RowSpan="2">
-
-        </view:CallsPage>
+        
     </Grid>
 </customcontrol:CustomContentPage>

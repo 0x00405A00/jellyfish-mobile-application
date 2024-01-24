@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Presentation.View;
 using Presentation.ViewModel;
 
 namespace Presentation.ApplicationSpecific
@@ -19,6 +20,8 @@ namespace Presentation.ApplicationSpecific
             services.AddSingleton<CameraHandlerPageViewModel>();
             services.AddSingleton<RegisterContentPageViewModel>();
             services.AddSingleton<SettingsPageViewModel>();
+
+            services.AddSingleton<PageInstanceFactory>();
             return services;
         }
         public static string GetDatabasePath()

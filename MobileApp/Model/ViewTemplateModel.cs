@@ -1,10 +1,4 @@
-﻿using Presentation.View;
-using Presentation.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Presentation.ViewModel;
 using System.Windows.Input;
 
 namespace Presentation.Model
@@ -14,7 +8,7 @@ namespace Presentation.Model
         public string Title { get; set; }
         public Type ContentViewModelType { get; set; }
         private bool _isSelected = false;
-        public virtual bool IsSelected
+        public bool IsSelected
         {
             get
             {

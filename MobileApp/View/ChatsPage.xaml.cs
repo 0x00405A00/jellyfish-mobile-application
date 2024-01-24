@@ -1,10 +1,13 @@
+using Presentation.ViewModel;
+
 namespace Presentation.View;
 
-public partial class ChatsPage : ContentView
+public partial class ChatsPage : ContentPage
 {
-	public ChatsPage()
+	public ChatsPage(ChatsPageViewModel chatsPageViewModel)
 	{
 		InitializeComponent();
+        BindingContext = chatsPageViewModel;
 	}
 
     /// <summary>
@@ -14,4 +17,5 @@ public partial class ChatsPage : ContentView
     {
         Chats.ScrollTo(0, 0);
     }
+
 }
