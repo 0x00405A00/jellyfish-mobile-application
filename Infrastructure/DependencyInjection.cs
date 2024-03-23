@@ -2,6 +2,14 @@
 using Infrastructure.Extension;
 using MobiInfrastructureleApp;
 using Infrastructure.Abstractions;
+using Shared.Infrastructure.Backend.Api;
+using Infrastructure.Api;
+using Microsoft.Extensions.Configuration;
+using Shared.Infrastructure.Backend.SignalR;
+using System;
+using Shared.Infrastructure.Backend;
+using Infrastructure.Storage;
+using Infrastructure.Authentification;
 
 namespace Infrastructure
 {
@@ -22,6 +30,23 @@ namespace Infrastructure
                 .UsingRegistrationStrategy(Scrutor.RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()//ClassName => IClassName
                 .WithScopedLifetime());
+
+            services.AddSingleton<ILocalStorageService, LocalStorageService>();
+            services.AddSingleton<IWebApiRestClient, WebApiRestClient>();
+            services.AddSingleton<IJellyfishBackendApi, JellyfishBackendApi>();
+            services.AddSingleton<IJellyfishBackendApiDecorator,JellyfishBackendApiDecorator>();//Consumes JellyfishBackendApi, abstraction layer
+
+
+            var sp = services.BuildServiceProvider();
+            var configuration = sp.GetService<IConfiguration>();
+            var infrastructureSignalRSection = configuration.GetSection("Infrastructure:SignalR");
+            string baseUrl = infrastructureSignalRSection["SignalRHubBaseUrl"];
+            int port = infrastructureSignalRSection.GetValue<int>("SignalRHubBaseUrlPort");
+            string hub = infrastructureSignalRSection["SignalRHubEndpoint"];
+            string transportProtocol = infrastructureSignalRSection["SignalRHubClientTransportProtocol"];
+            services.AddSingleton<SignalRConnectionParams>(sp => new SignalRConnectionParams(baseUrl, port, hub, transportProtocol));
+            services.AddSingleton<JellyfishSignalRClient>();
+            services.AddSingleton<IAuthentificationService, AuthentificationService>();
             return services;
 
         }

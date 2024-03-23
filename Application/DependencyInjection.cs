@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using FluentValidation;
+using Shared.Application.Mapper;
 
 namespace Application
 {
@@ -10,7 +11,7 @@ namespace Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services, Assembly[] assemblies)
         {
-
+            services.AddAutoMapper();
             services.AddMediatR(config =>
             {
                 config.RegisterServicesFromAssemblies(assemblies);

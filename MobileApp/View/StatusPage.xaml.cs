@@ -4,9 +4,13 @@ namespace Presentation.View;
 
 public partial class StatusPage : ContentPage
 {
-	public StatusPage(StatusPageViewModel statusPageViewModel)
+    public StatusPage()
+    {
+
+        InitializeComponent();
+    }
+    public StatusPage(StatusPageViewModel statusPageViewModel):this()
 	{
-		InitializeComponent();
 		BindingContext = statusPageViewModel;
 	}
 }

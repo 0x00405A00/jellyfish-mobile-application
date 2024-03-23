@@ -4,6 +4,7 @@ using Infrastructure.Handler.AppConfig;
 using Infrastructure.Handler.Data.InternalDataInterceptor;
 using Presentation.Model;
 using Presentation.Service;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
@@ -166,7 +167,7 @@ namespace Presentation.ViewModel
         public string SearchOnlineResultText { get; private set; }
         private readonly NavigationService _navigationService;
         private readonly ApplicationConfigHandler _applicationConfigHandler;
-        private readonly InternalDataInterceptorApplication _internalDataInterceptorApplication;
+        private readonly IInternalDataInterceptorApplicationDispatcher _internalDataInterceptorApplication;
         public ICommand AddOnlineUserCommand { get; private set; }
         public ICommand RemoveFriendCommand { get; private set; }
         public ICommand SelectCommand { get; private set; }
@@ -188,7 +189,8 @@ namespace Presentation.ViewModel
             }
         }
 
-        public UserSelectionPageViewModel(InternalDataInterceptorApplication internalDataInterceptorApplication,
+        public UserSelectionPageViewModel(
+            IInternalDataInterceptorApplicationDispatcher internalDataInterceptorApplication,
             NavigationService navigationService,
             ApplicationConfigHandler applicationConfigHandler)
         {

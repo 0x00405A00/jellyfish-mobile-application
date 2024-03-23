@@ -1,9 +1,6 @@
 ﻿using Infrastructure.Handler.Data.InternalDataInterceptor.Invoker;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
+
 #if ANDROID
 using Infrastructure.Handler.Data.InternalDataInterceptor.Invoker.Notification.Android;
 #elif IOS
@@ -14,13 +11,13 @@ namespace Infrastructure.Handler.Data.InternalDataInterceptor
 {
     public class InitDataInterceptorApplicationModel
     {
-        private readonly Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
+        private readonly IInternalDataInterceptorApplicationDispatcher _internalDataInterceptorApplication;
         private readonly JellyfishWebApiRestClientInvoker _jellyfishWebApiRestClientInvoker;
         private readonly ViewModelInvoker _viewModelInvoker;
         private readonly SqlLiteDatabaseHandlerInvoker _sqlLiteDatabaseHandlerInvoker;
         private readonly NotificationInvoker _notificationInvoker;
         public InitDataInterceptorApplicationModel(
-            Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
+            IInternalDataInterceptorApplicationDispatcher internalDataInterceptorApplication,
             JellyfishWebApiRestClientInvoker jellyfishWebApiRestClientInvoker,
             ViewModelInvoker viewModelInvoker,
             SqlLiteDatabaseHandlerInvoker sqlLiteDatabaseHandlerInvoker,

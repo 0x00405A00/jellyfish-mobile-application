@@ -16,7 +16,7 @@
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              xmlns:local="clr-namespace:Presentation" 
              NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False" 
-                                 customcontrol:BlockBackButtonAction="{Binding BlockBackSwitch}" 
+                                 BlockBackButtonAction="{Binding BlockBackSwitch}" 
                                  BackButtonCommand="{Binding BackButtonCommand}">
     
 

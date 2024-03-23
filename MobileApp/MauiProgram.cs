@@ -58,6 +58,7 @@ namespace Presentation
             var fs = Directory.GetFiles(FileSystem.AppDataDirectory);
             builder.AddIConfiguration();
             builder.Services.AddInfrastructure();
+            builder.Services.AddApplication(new System.Reflection.Assembly[] { Application.AssemblyReference.Assembly });
             builder.Services.AddPresentation(appConfigHandler);
             return builder.Build();
         }

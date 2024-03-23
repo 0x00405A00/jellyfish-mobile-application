@@ -4,6 +4,7 @@ using Presentation.ControlExtension;
 using Presentation.Controls;
 using Presentation.Model;
 using Presentation.Service;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -12,11 +13,10 @@ namespace Presentation.ViewModel
     public class ChatsPageViewModel : BaseViewModel
     {
         private readonly NavigationService _navigationService;
-        private readonly Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
+        private readonly IInternalDataInterceptorApplicationDispatcher _internalDataInterceptorApplication;
         private readonly IServiceProvider _serviceProvider;
         private ObservableCollection<Chat> _chats = new ObservableCollection<Chat>();
-        public ObservableCollection<Chat> Chats
-        { get { return _chats; } }
+        public ObservableCollection<Chat> Chats { get { return _chats; } }
         public string Test { get; set; } = "Mein Test Str ChatsPageViewModel";
         private Chat _SelectedChat;
         public Chat SelectedChat
@@ -63,16 +63,18 @@ namespace Presentation.ViewModel
                 OnPropertyChanged();
             }
         }
+        public readonly int HashCode;
         public ICommand SelectedChatChangedCommand { get; private set; }
         public ICommand TabChatCommand { get; private set; }
         public ICommand DeleteChatCommand { get; private set; }
         public ICommand RefreshChatsViewCommand { get; private set; }
         public ICommand SwipeLeftCommand { get; private set; }
         public ICommand SwipeRightCommand { get; private set; }
+        public ICommand LoadDataCommand { get; private set; }
 
         public ChatsPageViewModel(
             IServiceProvider serviceProvider,
-            Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
+            IInternalDataInterceptorApplicationDispatcher internalDataInterceptorApplication,
             NavigationService navigationService)
         {
             _internalDataInterceptorApplication = internalDataInterceptorApplication;   
@@ -82,7 +84,8 @@ namespace Presentation.ViewModel
             RefreshChatsViewCommand = new RelayCommand(RefreshChatsViewAction);
             SelectedChatChangedCommand = new RelayCommand(SelectedChatChangedAction);
             TabChatCommand = new RelayCommand<Chat>(TabChatAction);
-
+            LoadDataCommand = new RelayCommand(LoadData);
+            HashCode = this.GetHashCode();
             Init();
         }
         public override async void InitViewModel()
@@ -98,9 +101,18 @@ namespace Presentation.ViewModel
 
             var insertMsgResponse = await  _jellyfishSqlliteDatabaseHandler.Insert<MessageEntity>(new MessageEntity { ChatId = 1, Text = "meine erste nachricht", UserId = 1, Readed=false, MessageId=1, MessageDateTime = DateTime.Now });*/
             #endregion
+        }
+        public async void Init()
+        {
+            InitViewModel();
+        }
+
+        public async void LoadData()
+        {
+
 #if SAMPLE_DATA
-            _chats = await LoadChats();
 #endif
+            _chats = await LoadChats();
             try
             {
 
@@ -108,14 +120,10 @@ namespace Presentation.ViewModel
                 OnPropertyChanged(nameof(AreChatsAvailable));
                 OnPropertyChanged(nameof(Chats));
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
 
             }
-        }
-        public async void Init()
-        {
-            InitViewModel();
         }
 
         public void SelectedChatChangedAction()

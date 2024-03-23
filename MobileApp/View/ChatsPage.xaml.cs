@@ -4,11 +4,10 @@ namespace Presentation.View;
 
 public partial class ChatsPage : ContentPage
 {
-	public ChatsPage(ChatsPageViewModel chatsPageViewModel)
-	{
-		InitializeComponent();
-        BindingContext = chatsPageViewModel;
-	}
+    public ChatsPage()
+    {
+        InitializeComponent();
+    }
 
     /// <summary>
     /// Fixes the CollectionView rerendering

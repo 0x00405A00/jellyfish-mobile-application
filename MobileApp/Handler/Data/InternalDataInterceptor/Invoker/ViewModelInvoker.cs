@@ -1,9 +1,6 @@
-﻿using Presentation.ControlExtension;
-using Presentation.Controls;
-using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
-using Presentation.Model;
-using Presentation.ViewModel;
+﻿using Presentation.ViewModel;
 using Shared.DataTransferObject.Messenger;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
 
 namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker
 {

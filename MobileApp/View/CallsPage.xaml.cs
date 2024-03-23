@@ -4,9 +4,12 @@ namespace Presentation.View;
 
 public partial class CallsPage : ContentPage
 {
-	public CallsPage(CallsPageViewModel callsPageViewModel)
+    public CallsPage()
+    {
+        InitializeComponent();
+    }
+    public CallsPage(CallsPageViewModel callsPageViewModel) : this()
 	{
-		InitializeComponent();
 		BindingContext = callsPageViewModel;
 
 	}

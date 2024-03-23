@@ -1,12 +1,17 @@
-﻿using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
+﻿using Application.CQS.Messages.Commands.CreateMessage;
+using MediatR;
 using Shared.DataTransferObject.Messenger;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
 
 namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker
 {
     public class SqlLiteDatabaseHandlerInvoker : IInternalDataInterceptorApplicationInvoker
     {
-        public SqlLiteDatabaseHandlerInvoker() 
+        private readonly ISender sender;
+
+        public SqlLiteDatabaseHandlerInvoker(ISender sender) 
         {
+            this.sender = sender;
         }
         public Task CreateFriendRequest(params UserFriendshipRequestDTO[] data)
         {
@@ -25,18 +30,8 @@ namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker
 
         public async Task ReceiveMessage(params MessageDTO[] data)
         {
-            foreach (var dataItem in data)
-            {
-                try
-                {
-                    
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-            }
+            var command = new CreateMessageCommand(data);
+            await sender.Send(command);
         }
 
         public Task SendMessage(params MessageDTO[] data)

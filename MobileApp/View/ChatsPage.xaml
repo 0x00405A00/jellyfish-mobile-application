@@ -11,7 +11,11 @@
              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
              xmlns:local="clr-namespace:Presentation"
              x:Name="ChatsPageView"
-             IsVisible="{Binding SelectedView,Mode=OneWay}">
+             IsVisible="{Binding SelectedView,Mode=TwoWay}">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding LoadDataCommand}"></toolkit:EventToCommandBehavior>
+    </ContentPage.Behaviors>
     <ContentPage.Resources>
         <converter:ValueThrouthputConverter x:Key="ValueThrouthputConverter"></converter:ValueThrouthputConverter>
         <converter:BoolInvertConverter x:Key="BoolInvertConverter"></converter:BoolInvertConverter>
@@ -73,23 +77,21 @@
             HorizontalOptions="Fill"
             VerticalOptions="Fill">
 
-        <Label Text="Test" TextColor="Black"></Label>
         <CollectionView 
             x:Name="Chats"
-            BackgroundColor="Pink"
+            BackgroundColor="Transparent"
             ItemsSource="{Binding Chats,Mode=TwoWay}" 
             ItemTemplate="{StaticResource ChatTemplate}" 
             SelectionMode="Single" 
             SelectedItem="{Binding SelectedChat,Mode=TwoWay}" 
             IsVisible="{Binding AreChatsAvailable,Mode=TwoWay}"
             HorizontalOptions="Fill"
-            WidthRequest="400"
-            HeightRequest="400"
             VerticalOptions="Fill"
             CanReorderItems="False"
             CanMixGroups="False"
             EmptyViewTemplate="{StaticResource EmptyChatsCollectionTemplate}"
             >
+            
         </CollectionView> 
     </VerticalStackLayout>
 </ContentPage>

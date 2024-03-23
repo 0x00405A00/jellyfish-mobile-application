@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
+using Infrastructure.Authentification;
 using Infrastructure.Handler.AppConfig;
 using Infrastructure.Handler.Device.Media.Contact;
 using Infrastructure.Handler.Device.Vibrate;
@@ -6,6 +7,8 @@ using Presentation.Controls;
 using Presentation.Model;
 using Presentation.Service;
 using Presentation.View;
+using Shared.Infrastructure.Backend.Api;
+using Shared.Infrastructure.Backend.SignalR;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -18,6 +21,8 @@ namespace Presentation.ViewModel
         private readonly ApplicationConfigHandler _applicationConfigHandler;
         private readonly NavigationService _navigationService;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IAuthentificationService authentificationService;
+        private readonly JellyfishSignalRClient signalRClient;
         private readonly DeviceContactHandler _deviceContactHandler;
         public ChatsPageViewModel ChatsPageViewModel
         {
@@ -35,6 +40,7 @@ namespace Presentation.ViewModel
             private set;
         }
 
+        public ICommand OpenSignalrConnectionCommand { get; private set; }
         public ICommand LoadViewCommand { get; private set; }
         public ICommand BindingContextChangedCommand { get; private set; }
         public ICommand SwipeLeftCommand { get; private set; }
@@ -77,7 +83,6 @@ namespace Presentation.ViewModel
                 OnPropertyChanged();
             }
         }
-
         private ViewTemplateModel _selectedViewTemplate;
         public ViewTemplateModel SelectedViewTemplate
         {
@@ -93,9 +98,9 @@ namespace Presentation.ViewModel
                 if (_selectedViewTemplate != null)
                     _selectedViewTemplate.IsSelected = false;
                 _selectedViewTemplate = value;
-                value.IsSelected = true;    
+                value.IsSelected = true;
 
-                if(value.ContentViewModelType == typeof(ChatsPageViewModel))
+                if (value.ContentViewModelType == typeof(ChatsPageViewModel))
                 {
                     this.ChatsPageViewModel.SelectedView = true;
                     this.StatusPageViewModel.SelectedView = false;
@@ -115,6 +120,7 @@ namespace Presentation.ViewModel
                     this.StatusPageViewModel.SelectedView = false;
                     this.ChatsPageViewModel.SelectedView = false;
                 }
+
                 OnPropertyChanged(nameof(SelectedViewTemplate));
             }
         }
@@ -128,6 +134,8 @@ namespace Presentation.ViewModel
         public readonly string UserSelectionNewGroupChatQueue = nameof(MainPageViewModel) + "_UserSelectionNewGroupChat";
 
         public MainPageViewModel(IServiceProvider serviceProvider,
+            IAuthentificationService authentificationService,
+            JellyfishSignalRClient signalRClient,
             SettingsPageViewModel settingsPageViewModel,
             VibrateHandler vibrateHandler,
             NavigationService navigationService,
@@ -144,6 +152,8 @@ namespace Presentation.ViewModel
             StatusPageViewModel = statusPageViewModel;
             CallsPageViewModel = callsPageViewModel;
             _serviceProvider = serviceProvider;
+            this.authentificationService = authentificationService;
+            this.signalRClient = signalRClient;
             _navigationService = navigationService;
             BindingContextChangedCommand = new RelayCommand<object>(BindingContextChangedAction);
             SwipeLeftCommand = new RelayCommand<object>(SwipeLeftAction);
@@ -156,7 +166,7 @@ namespace Presentation.ViewModel
             CreateNewGroupCommand = new RelayCommand(CreateNewGroupAction);
             OpenSettingsPageCommand = new RelayCommand(OpenSettingsPageAction);
             CreateNewChatCommand = new RelayCommand(CreateNewChatAction);
-
+            OpenSignalrConnectionCommand = new RelayCommand(OpenSignalrConnection);
             MenuItems = new ObservableCollection<MenuItemModel>()
             {
                 new MenuItemModel { Title = "New Chat", ExecCommand = CreateNewChatCommand },
@@ -165,6 +175,23 @@ namespace Presentation.ViewModel
             CalcHeigtByItems = MenuItems.Count * 45;
             InitViewModel();
         }
+
+        private async void OpenSignalrConnection()
+        {
+            var auth = await authentificationService.Authentificate(_applicationConfigHandler.ApplicationConfig.AccountConfig.UserName, _applicationConfigHandler.ApplicationConfig.AccountConfig.Password, CancellationToken.None);
+            if(!auth)
+            {
+                Logout();
+                return;
+            }
+            signalRClient.OpenConnection();
+        }
+
+        private void SetDefaultTab()
+        {
+            this.SelectedViewTemplate = ViewTemplates.Where(x=>x.ContentViewModelType == typeof(ChatsPageViewModel)).FirstOrDefault();
+            this.ChatsPageViewModel.SelectedView = true;
+        }
         public async void LoadViewCommandAction()
         {
 
@@ -172,6 +199,8 @@ namespace Presentation.ViewModel
 
         public override void SignalrReconnectedAction()
         {
+
+
             base.SignalrReconnectedAction();
             NotificationHandler.ToastNotify("Reconnect to MobileApp Servers...");
         }
@@ -290,13 +319,18 @@ namespace Presentation.ViewModel
                 if(response)
                 {
                     BlockBackSwitch = false;
-                    _navigationService.CloseCurrentPage();
+                    Logout();
                 }
                 else
                 {
                     BlockBackSwitch = false;
                 }
             }
+        }
+        private void Logout()
+        {
+
+            _navigationService.CloseCurrentPage();
         }
         private int CalculateIndex(ViewTemplateModel selectedObjectOfList, ViewTemplateModel[] items)
         {
@@ -323,6 +357,7 @@ namespace Presentation.ViewModel
             if(ViewTemplates == null)
             {
                 ViewTemplates = items;
+                SetDefaultTab();
             }
         }
         public void SwipeLeftAction(object collection)

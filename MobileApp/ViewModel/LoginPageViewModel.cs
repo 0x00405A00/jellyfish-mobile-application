@@ -3,11 +3,19 @@ using Presentation.Service;
 using Presentation.Validation;
 using Presentation.View;
 using System.Windows.Input;
+using MediatR;
+using Application.CQS.Authentification.Commands.CreateAuth;
+using Shared.Infrastructure.Backend.SignalR;
+using Infrastructure.Storage;
+using Shared.Infrastructure.Backend;
 
 namespace Presentation.ViewModel
 {
     public class LoginPageViewModel : BaseViewModel
     {
+        private readonly ILocalStorageService localStorageService;
+        private readonly ISender sender;
+        private readonly JellyfishSignalRClient signalRClient;
         private readonly ResetPasswordContentPageViewModel _resetPasswordContentPageViewModel;
         private readonly RegisterContentPageViewModel _registerContentPageViewModel;
         private readonly ApplicationConfigHandler _applicationConfigHandler;
@@ -45,12 +53,18 @@ namespace Presentation.ViewModel
         public ICommand OpenForgotPasswordPageCommand { get; private set; } 
 
         public LoginPageViewModel(
+            ILocalStorageService localStorageService,
+            ISender sender,
+            JellyfishSignalRClient signalRClient,
             ResetPasswordContentPageViewModel resetPasswordContentPageViewModel,
             RegisterContentPageViewModel registerContentPageViewModel,
             MainPageViewModel mainPageViewModel,
             NavigationService navigationService,
             ApplicationConfigHandler applicationConfigHandler)
         {
+            this.localStorageService = localStorageService;
+            this.sender = sender;
+            this.signalRClient = signalRClient;
             _resetPasswordContentPageViewModel = resetPasswordContentPageViewModel;
             _registerContentPageViewModel = registerContentPageViewModel;   
             _applicationConfigHandler = applicationConfigHandler;   
@@ -114,21 +128,20 @@ namespace Presentation.ViewModel
             }
 
             IsLoading = true;
-            //var response = await _webApiRestClient.Authentificate(Email.Value, Password.Value, _webApiActionCancelationToken.Token);
+            var command = new CreateAuthCommand(Email.Value, Password.Value);
+            var response = await sender.Send(command, _webApiActionCancelationToken.Token);
             IsLoading = false;
-            /*if (response == null)
+            if (!response.IsSuccess)
             {
-                NotificationHandler.ToastNotify("No internet: check your connection.");
+                Presentation.Controls.NotificationHandler.ToastNotify(response.Errors.First().Message);
                 return;
-            }*/
-
+            }
 
             _applicationConfigHandler.Safe();
             LoggedIn();
         }
         private async void LoggedIn()
         {
-
             await _navigationService.PushAsync(new MainPage(_mainPageViewModel));
             _mainPageViewModel.SwipeRightAction(_mainPageViewModel.ViewTemplates);
         }
@@ -175,9 +188,9 @@ namespace Presentation.ViewModel
             {
                 ValidationMessage = "Email entry is required."
             });
-            Email.Validations.Add(new EmailRule { 
+            /*Email.Validations.Add(new EmailRule { 
                 ValidationMessage = "Email is invalid."
-            });
+            });*/
 
             Password.Validations.Add(new IsNotNullOrEmptyRule
             {

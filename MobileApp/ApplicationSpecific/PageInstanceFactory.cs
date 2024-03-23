@@ -46,23 +46,6 @@ namespace Presentation.ApplicationSpecific
             _settingsPageViewModel = settingsPageViewModel;
         }
 
-
-        public MainPage GetMainPage()
-        {
-            return new MainPage(_mainPageViewModel);
-        }
-        public ChatsPage GetChatsPage()
-        {
-            return new ChatsPage(_chatsPageViewModel);
-        }
-        public StatusPage GetStatusPage()
-        {
-            return new StatusPage(_statusPageViewModel);
-        }
-        public CallsPage GetCallsPage()
-        {
-            return new CallsPage(_callsPageViewModel);
-        }
     }
 
 }

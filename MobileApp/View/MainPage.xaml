@@ -16,6 +16,7 @@
                                  BackButtonCommand="{Binding BackButtonCommand}">
     <customcontrol:CustomContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding LoadViewCommand}"></toolkit:EventToCommandBehavior>
+        <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding OpenSignalrConnectionCommand}"></toolkit:EventToCommandBehavior>
     </customcontrol:CustomContentPage.Behaviors>
     
     <ContentPage.Resources>
@@ -145,13 +146,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition ></RowDefinition>
-            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid 
             Grid.Row="0" 
-            Grid.Column="0" 
-            BackgroundColor="{StaticResource Primary}">
+            Grid.Column="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="#302C33"
+                          Offset="0.0125" />
+                    <GradientStop Color="#d05ea1"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="0"></RowDefinition>
@@ -344,6 +352,34 @@
                 </Grid>
             </Border>
         </AbsoluteLayout>
-        
+        <view:ChatsPage 
+            BindingContext="{Binding ChatsPageViewModel}"
+            ZIndex="0"
+            Grid.Column="0"
+            Grid.Row="1"
+            IsVisible="{Binding ChatsPageViewModel.SelectedView}"
+            Grid.RowSpan="3"
+            >
+
+        </view:ChatsPage>
+        <view:StatusPage 
+            BindingContext="{Binding StatusPageViewModel}"
+            ZIndex="1"
+            Grid.Column="0"
+            Grid.Row="1"
+            IsVisible="{Binding StatusPageViewModel.SelectedView}"
+            Grid.RowSpan="2">
+            
+        </view:StatusPage>
+
+        <view:CallsPage 
+            BindingContext="{Binding CallsPageViewModel}"
+            ZIndex="2"
+            Grid.Column="0"
+            Grid.Row="1"
+            IsVisible="{Binding CallsPageViewModel.SelectedView}"
+            Grid.RowSpan="2">
+
+        </view:CallsPage>
     </Grid>
 </customcontrol:CustomContentPage>

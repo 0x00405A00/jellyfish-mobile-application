@@ -15,6 +15,10 @@ using Infrastructure.Handler.Device.Vibrate;
 using Shared.Infrastructure.Backend;
 using Shared.Infrastructure.Backend.Api;
 using Microsoft.Maui.LifecycleEvents;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
+using Shared.Infrastructure.Backend.Interceptor;
+
+
 /*using Plugin.LocalNotification;
 using Plugin.LocalNotification.AndroidOption;*/
 
@@ -30,8 +34,6 @@ namespace Infrastructure.Extension
     {
         public static IServiceCollection AddDeviceHandlers(this IServiceCollection services, ApplicationConfigHandler applicationHandler)
         {
-            services.AddSingleton<ILocalStorageService, LocalStorageService>();
-            services.AddSingleton<ICustomAuthentificationStateProvider, CustomAuthentificationStateProvider>();
             services.AddSingleton<ApplicationResourcesHandler>();
             services.AddSingleton<FileHandler>(new FileHandler(() => { }, () => { }));
             services.AddSingleton<VibrateHandler>(new VibrateHandler(() => { }, () => { }));
@@ -45,18 +47,17 @@ namespace Infrastructure.Extension
             services.AddSingleton<ClipBoardHandler>(new ClipBoardHandler());
             services.AddSingleton<NetworkingHandler>(new NetworkingHandler(() => { }, () => { }));
 
-            services.AddSingleton<JellyfishBackendApi>();
 
             services.AddSingleton<JellyfishWebApiRestClientInvoker>();
             services.AddSingleton<ViewModelInvoker>();
             services.AddSingleton<SqlLiteDatabaseHandlerInvoker>();
             services.AddSingleton<NotificationInvoker>();
-            services.AddSingleton<Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication>();
+            services.AddSingleton<IInternalDataInterceptorApplicationDispatcher, InternalDataInterceptorApplicationDispatcher>();
 
-            bool containsRelevantService = services.ToList().Find(x => x.ServiceType == typeof(InternalDataInterceptorApplication)) != null;
+            bool containsRelevantService = services.ToList().Find(x => x.ServiceType == typeof(IInternalDataInterceptorApplicationDispatcher)) != null;
             if (!containsRelevantService)
             {
-                throw new ArgumentNullException(nameof(InternalDataInterceptorApplication) + " not found in DI or " + nameof(AddDeviceHandlers) + " is called before initialization of " + nameof(InternalDataInterceptorApplication) + "");
+                throw new ArgumentNullException(nameof(IInternalDataInterceptorApplicationDispatcher) + " not found in DI or " + nameof(AddDeviceHandlers) + " is called before initialization of " + nameof(IInternalDataInterceptorApplicationDispatcher) + "");
             }
             services.AddSingleton<InitDataInterceptorApplicationModel>();
             /*var signalrClient = new SignalRClient();

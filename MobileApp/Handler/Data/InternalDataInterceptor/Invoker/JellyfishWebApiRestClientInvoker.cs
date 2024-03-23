@@ -1,7 +1,7 @@
 ﻿using Presentation.Controls;
-using Infrastructure.Handler.Data.InternalDataInterceptor.Abstraction;
 using Shared.DataTransferObject.Messenger;
 using Shared.Infrastructure.Backend.Api;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
 
 namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker
 {

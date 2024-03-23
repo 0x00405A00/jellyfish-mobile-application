@@ -6,6 +6,7 @@ using Presentation.Model;
 using Presentation.Service;
 using Presentation.View.SettingsSubPages;
 using Presentation.ViewModel.SettingsSubPage;
+using Shared.Infrastructure.Backend.Interceptor.Abstraction;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -41,7 +42,7 @@ namespace Presentation.ViewModel
         public bool HasUserFriendInvites { get => UserFriendInvitesList != null && UserFriendInvitesList.Count != 0; }
 
         private readonly ApplicationConfigHandler _applicationConfigHandler;
-        private readonly Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication _internalDataInterceptorApplication;
+        private readonly IInternalDataInterceptorApplicationDispatcher _internalDataInterceptorApplication;
         private readonly NavigationService _navigationService;
         public ICommand OpenAccountPage { get; private set; }
         public ICommand LoadedCommand { get; private set; }
@@ -52,7 +53,7 @@ namespace Presentation.ViewModel
         private Dictionary<ICommand, AbstractSettingsPageGenericViewModel> _commandsToViewsRelation = new Dictionary<ICommand, AbstractSettingsPageGenericViewModel>();
         public ObservableCollection<SettingsPageSettingItem> SettingsPageSettingItems { get; set; }
         public SettingsPageViewModel(
-            Infrastructure.Handler.Data.InternalDataInterceptor.InternalDataInterceptorApplication internalDataInterceptorApplication,
+            IInternalDataInterceptorApplicationDispatcher internalDataInterceptorApplication,
             NavigationService navigationService,
             ApplicationConfigHandler applicationConfigHandler,
             ApplicationResourcesHandler applicationResourcesHandler)

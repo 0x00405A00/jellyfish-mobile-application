@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="8.0.1" />
@@ -18,6 +19,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.3" />
+    <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="Scrutor" Version="4.2.2" />
   </ItemGroup>
 
@@ -25,8 +28,11 @@
     <Reference Include="Domain">
       <HintPath>..\..\jellyfish-backend-ddd\Domain\bin\Backend\net8.0\Domain.dll</HintPath>
     </Reference>
+    <Reference Include="Shared">
+      <HintPath>..\..\jellyfish-backend-ddd\Presentation\bin\Backend\net8.0\Shared.dll</HintPath>
+    </Reference>
     <Reference Include="Shared.Infrastructure">
-      <HintPath>..\..\jellyfish-backend-ddd\Shared.Infrastructure\bin\Debug\net8.0\Shared.Infrastructure.dll</HintPath>
+      <HintPath>..\..\jellyfish-backend-ddd\Presentation\bin\Backend\net8.0\Shared.Infrastructure.dll</HintPath>
     </Reference>
   </ItemGroup>
 

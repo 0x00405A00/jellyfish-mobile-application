@@ -1,8 +1,10 @@
 ﻿using Infrastructure.Handler.AppConfig;
+using Infrastructure.Handler.Data.InternalDataInterceptor;
 using Infrastructure.Handler.Device.Media;
 using Presentation.Service;
 using Presentation.View;
 using Presentation.ViewModel;
+using Shared.Infrastructure.Backend.SignalR;
 
 namespace Presentation
 {
@@ -10,6 +12,7 @@ namespace Presentation
     {
         private CancellationTokenSource _webApiActionCancelationToken = new CancellationTokenSource();
         public App(
+            InitDataInterceptorApplicationModel initDataInterceptorApplicationModel,
             ApplicationConfigHandler applicationConfigHandler,
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,
@@ -32,14 +35,9 @@ namespace Presentation
         {
             bool loggedin = true;
 
-
-
-
-
             if (loggedin)
             {
                 await navigationService.PushAsync(new MainPage(mainPageViewModel));
-
             }
 
             ResourceDictionary = new Dictionary<string, ResourceDictionary>();
