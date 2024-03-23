@@ -28,9 +28,18 @@ namespace Presentation.ViewModel
         {
             get; private set;   
         }
+        private bool _showPassword = false;
         public bool ShowPassword
         {
-            get; private set;   
+            get
+            {
+                return _showPassword;
+            }
+            set
+            {
+                _showPassword = value;
+                OnPropertyChanged(nameof(ShowPassword));
+            }
         }
         private bool _rememberMe=false;
         public bool RememberMe

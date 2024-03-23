@@ -22,7 +22,6 @@ namespace Presentation.ViewModel
         private readonly NavigationService _navigationService;
         private readonly IServiceProvider _serviceProvider;
         private readonly IAuthentificationService authentificationService;
-        private readonly JellyfishSignalRClient signalRClient;
         private readonly DeviceContactHandler _deviceContactHandler;
         public ChatsPageViewModel ChatsPageViewModel
         {
@@ -153,7 +152,6 @@ namespace Presentation.ViewModel
             CallsPageViewModel = callsPageViewModel;
             _serviceProvider = serviceProvider;
             this.authentificationService = authentificationService;
-            this.signalRClient = signalRClient;
             _navigationService = navigationService;
             BindingContextChangedCommand = new RelayCommand<object>(BindingContextChangedAction);
             SwipeLeftCommand = new RelayCommand<object>(SwipeLeftAction);
@@ -184,7 +182,6 @@ namespace Presentation.ViewModel
                 Logout();
                 return;
             }
-            signalRClient.OpenConnection();
         }
 
         private void SetDefaultTab()
@@ -327,9 +324,9 @@ namespace Presentation.ViewModel
                 }
             }
         }
-        private void Logout()
+        private async void Logout()
         {
-
+            await authentificationService.Logout(CancellationToken.None);
             _navigationService.CloseCurrentPage();
         }
         private int CalculateIndex(ViewTemplateModel selectedObjectOfList, ViewTemplateModel[] items)

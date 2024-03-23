@@ -211,6 +211,9 @@
     <Reference Include="Shared">
       <HintPath>..\..\jellyfish-backend-ddd\Presentation\bin\Backend\net8.0\Shared.dll</HintPath>
     </Reference>
+    <Reference Include="Shared.Application">
+      <HintPath>..\..\jellyfish-backend-ddd\Shared.Application\bin\Debug\net8.0\Shared.Application.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">

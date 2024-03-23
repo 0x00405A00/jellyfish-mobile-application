@@ -1,4 +1,4 @@
-﻿using Application.CQS.Messages.Commands.CreateMessage;
+﻿using Application.CQS.Messenger.Chat.Command.CreateMessage;
 using MediatR;
 using Shared.DataTransferObject.Messenger;
 using Shared.Infrastructure.Backend.Interceptor.Abstraction;
@@ -30,8 +30,8 @@ namespace Infrastructure.Handler.Data.InternalDataInterceptor.Invoker
 
         public async Task ReceiveMessage(params MessageDTO[] data)
         {
-            var command = new CreateMessageCommand(data);
-            await sender.Send(command);
+            /*var command = new CreateMessageCommand(data);
+            await sender.Send(command);*/
         }
 
         public Task SendMessage(params MessageDTO[] data)

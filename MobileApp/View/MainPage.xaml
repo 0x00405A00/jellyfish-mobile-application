@@ -156,7 +156,7 @@
                 <LinearGradientBrush EndPoint="1,0">
                     <GradientStop Color="#302C33"
                           Offset="0.0125" />
-                    <GradientStop Color="#d05ea1"
+                    <GradientStop Color="{StaticResource Primary}"
                           Offset="1.0" />
                 </LinearGradientBrush>
             </Grid.Background>

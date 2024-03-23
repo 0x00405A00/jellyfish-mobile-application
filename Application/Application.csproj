@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQS\Messages\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
@@ -34,6 +30,13 @@
     <Reference Include="Shared.Application">
       <HintPath>..\..\jellyfish-backend-ddd\Shared.Application\bin\Debug\net8.0\Shared.Application.dll</HintPath>
     </Reference>
+    <Reference Include="Shared.Infrastructure">
+      <HintPath>..\..\jellyfish-backend-ddd\Presentation\bin\Backend\net8.0\Shared.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CQS\" />
   </ItemGroup>
 
 </Project>

@@ -76,7 +76,14 @@
     <VerticalStackLayout
             HorizontalOptions="Fill"
             VerticalOptions="Fill">
-
+        <VerticalStackLayout.Background>
+            <LinearGradientBrush EndPoint="1,0">
+                <GradientStop Color="#302C33"
+                          Offset="0.0125" />
+                <GradientStop Color="{StaticResource Primary}"
+                          Offset="1.0" />
+            </LinearGradientBrush>
+        </VerticalStackLayout.Background>
         <CollectionView 
             x:Name="Chats"
             BackgroundColor="Transparent"
@@ -89,9 +96,7 @@
             VerticalOptions="Fill"
             CanReorderItems="False"
             CanMixGroups="False"
-            EmptyViewTemplate="{StaticResource EmptyChatsCollectionTemplate}"
-            >
-            
+            EmptyViewTemplate="{StaticResource EmptyChatsCollectionTemplate}">
         </CollectionView> 
     </VerticalStackLayout>
 </ContentPage>
