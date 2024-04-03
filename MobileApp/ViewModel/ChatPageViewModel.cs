@@ -7,7 +7,7 @@ using Infrastructure.Handler.Device.Sensor;
 using Presentation.ControlExtension;
 using Presentation.Controls;
 using Presentation.Model;
-using Presentation.Service;
+using Presentation.Services;
 using Presentation.View;
 using System.Collections.ObjectModel;
 using System.Windows.Input;

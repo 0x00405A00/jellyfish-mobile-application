@@ -16,7 +16,7 @@
                                  BackButtonCommand="{Binding BackButtonCommand}">
     <customcontrol:CustomContentPage.Behaviors>
         <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding LoadViewCommand}"></toolkit:EventToCommandBehavior>
-        <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding OpenSignalrConnectionCommand}"></toolkit:EventToCommandBehavior>
+        <toolkit:EventToCommandBehavior EventName="Loaded" Command="{Binding OpenConnectionCommand}"></toolkit:EventToCommandBehavior>
     </customcontrol:CustomContentPage.Behaviors>
     
     <ContentPage.Resources>
@@ -359,7 +359,7 @@
             Grid.Row="1"
             IsVisible="{Binding ChatsPageViewModel.SelectedView}"
             Grid.RowSpan="3"
-            >
+            >       
 
         </view:ChatsPage>
         <view:StatusPage 
@@ -369,7 +369,7 @@
             Grid.Row="1"
             IsVisible="{Binding StatusPageViewModel.SelectedView}"
             Grid.RowSpan="2">
-            
+
         </view:StatusPage>
 
         <view:CallsPage 
@@ -381,5 +381,7 @@
             Grid.RowSpan="2">
 
         </view:CallsPage>
+
+
     </Grid>
 </customcontrol:CustomContentPage>

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Maui.Storage;
 using Shared.DataTransferObject;
 using Shared.Infrastructure.Backend;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace Infrastructure.Storage
 {
@@ -48,7 +50,7 @@ namespace Infrastructure.Storage
             }
         }
 
-        public async Task<T> GetDeserializedJsonItemFromKey<T>(string key)
+        public async Task<T> GetDeserializedJsonItemFromKey<T>(string key, [CallerMemberName] object caller = null)
         {
             if (String.IsNullOrEmpty(key))
             {

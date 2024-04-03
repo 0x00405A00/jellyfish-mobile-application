@@ -1,7 +1,7 @@
 ﻿using Infrastructure.Extension;
 using Infrastructure.Handler.AppConfig;
 using Presentation.ApplicationSpecific;
-using Presentation.Service;
+using Presentation.Services;
 
 namespace Application
 {

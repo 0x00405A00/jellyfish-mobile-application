@@ -73,18 +73,7 @@
         </DataTemplate>
         <selector:ChatTemplateSelector x:Key="ChatTemplateSelector" OpenExistingChatTemplate="{StaticResource ChatTemplate}"></selector:ChatTemplateSelector>
     </ContentPage.Resources>
-    <VerticalStackLayout
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill">
-        <VerticalStackLayout.Background>
-            <LinearGradientBrush EndPoint="1,0">
-                <GradientStop Color="#302C33"
-                          Offset="0.0125" />
-                <GradientStop Color="{StaticResource Primary}"
-                          Offset="1.0" />
-            </LinearGradientBrush>
-        </VerticalStackLayout.Background>
-        <CollectionView 
+    <CollectionView 
             x:Name="Chats"
             BackgroundColor="Transparent"
             ItemsSource="{Binding Chats,Mode=TwoWay}" 
@@ -92,11 +81,19 @@
             SelectionMode="Single" 
             SelectedItem="{Binding SelectedChat,Mode=TwoWay}" 
             IsVisible="{Binding AreChatsAvailable,Mode=TwoWay}"
+            
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
             CanReorderItems="False"
             CanMixGroups="False"
             EmptyViewTemplate="{StaticResource EmptyChatsCollectionTemplate}">
-        </CollectionView> 
-    </VerticalStackLayout>
+        <CollectionView.Background>
+            <LinearGradientBrush EndPoint="1,0">
+                <GradientStop Color="#302C33"
+                  Offset="0.0125" />
+                <GradientStop Color="{StaticResource Primary}"
+                  Offset="1.0" />
+            </LinearGradientBrush>
+        </CollectionView.Background>
+    </CollectionView>
 </ContentPage>

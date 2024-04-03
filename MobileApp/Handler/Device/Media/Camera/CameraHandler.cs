@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Infrastructure.Handler.Device.Extension;
 using Presentation.Controls;
 using Infrastructure.Handler.Abstraction;
-using Presentation.Service;
+using Presentation.Services;
 using Presentation.View;
 using Presentation.ViewModel;
 using AppModel = Microsoft.Maui.ApplicationModel;

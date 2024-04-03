@@ -3,7 +3,7 @@ using Infrastructure.Handler.Device.Media;
 using Microsoft.Maui.Controls.Shapes;
 using Presentation.Data.AppConfig.ConcreteImplements;
 using Presentation.Model;
-using Presentation.Service;
+using Presentation.Services;
 using Presentation.View.SettingsSubPages;
 using Presentation.ViewModel.SettingsSubPage;
 using Shared.Infrastructure.Backend.Interceptor.Abstraction;

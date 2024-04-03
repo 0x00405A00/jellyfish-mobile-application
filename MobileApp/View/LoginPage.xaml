@@ -62,7 +62,7 @@
                                 <Path VerticalOptions="Center" HorizontalOptions="Center" Stroke="{StaticResource Primary}" StrokeThickness="1" StrokeMiterLimit="10" HeightRequest="24" WidthRequest="24" Data="M18,2H6C4.895,2,4,2.895,4,4v16c0,1.105,0.895,2,2,2h12c1.105,0,2-0.895,2-2V4C20,2.895,19.105,2,18,2z M12,6 c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S10.3,6,12,6z M16.333,18H7.667C7.298,18,7,17.702,7,17.333V17c0-1.571,2.512-3,5-3 s5,1.429,5,3v0.333C17,17.702,16.702,18,16.333,18z"></Path>
                                 <VerticalStackLayout>
                                     <HorizontalStackLayout Spacing="10">
-                                        <Entry Placeholder="E-Mail..." Text="{Binding Email.Value,Mode=TwoWay}" HorizontalOptions="Fill"
+                                        <Entry Placeholder="E-Mail..." Text="{Binding Email.Value,Mode=TwoWay}" HorizontalOptions="Fill" TextColor="{StaticResource Primary}"
                                            IsTextPredictionEnabled="False" IsSpellCheckEnabled="False">
                                             <Entry.Behaviors>
                                                 <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateByValueChangeCommand}" CommandParameter="1" />
@@ -93,12 +93,11 @@
                             </HorizontalStackLayout>
                         </Frame>
                         <Frame Padding="5" BorderColor="Transparent" CornerRadius="15">
-                            <HorizontalStackLayout Spacing="5">
+                            <HorizontalStackLayout Spacing="5" >
                                 <Path VerticalOptions="Center" HorizontalOptions="Center" Stroke="{StaticResource Primary}" StrokeThickness="1" StrokeMiterLimit="10" HeightRequest="24" WidthRequest="24" Data="M18,2H6C4.895,2,4,2.895,4,4v16c0,1.105,0.895,2,2,2h12c1.105,0,2-0.895,2-2V4C20,2.895,19.105,2,18,2z M12,6 c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S10.3,6,12,6z M16.333,18H7.667C7.298,18,7,17.702,7,17.333V17c0-1.571,2.512-3,5-3 s5,1.429,5,3v0.333C17,17.702,16.702,18,16.333,18z"></Path>
-                                <VerticalStackLayout>
-
-                                    <HorizontalStackLayout Spacing="10">
-                                        <Entry Placeholder="Password..." Text="{Binding Password.Value,Mode=TwoWay}" HorizontalOptions="Fill"
+                                <VerticalStackLayout HorizontalOptions="Fill" >
+                                    <HorizontalStackLayout HorizontalOptions="Fill"  Spacing="10">
+                                        <Entry Placeholder="Password..." Text="{Binding Password.Value,Mode=TwoWay}" TextColor="{StaticResource Primary}" HorizontalOptions="Fill"
                                            IsPassword="{Binding ShowPassword,Converter={StaticResource BoolInvertConverter}}" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False">
                                             <Entry.Behaviors>
                                                 <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateByValueChangeCommand}" CommandParameter="2" />
@@ -127,6 +126,7 @@
 
                                 </VerticalStackLayout>
                                 <Switch 
+                                    HorizontalOptions="End"
                                             ThumbColor="Gray"
                                             IsToggled="{Binding ShowPassword,Mode=TwoWay}" 
                                             OnColor="{StaticResource Primary}"></Switch>

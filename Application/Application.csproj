@@ -36,7 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQS\" />
+    <Folder Include="CQS\Chat\Commands\CreateChat\" />
+    <Folder Include="CQS\Chat\Queries\" />
   </ItemGroup>
 
 </Project>

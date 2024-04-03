@@ -9,7 +9,7 @@ using Perms = Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.ApplicationModel.Communication;
 using Infrastructure.Handler.Abstraction;
 using System.Runtime.CompilerServices;
-using Presentation.Service;
+using Presentation.Services;
 using Presentation.ViewModel;
 using Presentation.View;
 using Presentation.Controls;

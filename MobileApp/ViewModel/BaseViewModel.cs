@@ -22,10 +22,5 @@ namespace Presentation.ViewModel
         {
 
         }
-
-        public async virtual void SignalrReconnectedAction()
-        {
-
-        }
     }
 }

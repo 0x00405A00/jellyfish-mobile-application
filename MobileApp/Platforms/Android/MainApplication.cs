@@ -1,6 +1,6 @@
 ﻿using Android.App;
 using Android.Runtime;
-using Android.Media;
+using Presentation.Platforms.Android;
 
 [assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
 [assembly: UsesPermission(Android.Manifest.Permission.WriteContacts)]
@@ -21,6 +21,7 @@ using Android.Media;
 [assembly: UsesPermission(Android.Manifest.Permission.PostNotifications)]
 [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
 [assembly: UsesPermission(Android.Manifest.Permission.RecordAudio)]
+[assembly: UsesPermission(Android.Manifest.Permission.ForegroundService)]
 
 namespace Presentation
 {
@@ -37,7 +38,12 @@ namespace Presentation
             
         }
 
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        protected override MauiApp CreateMauiApp()
+        {
+
+            this.StartForegroundServiceCompat<ConnectionCheckBackgroundService>();
+            return MauiProgram.CreateMauiApp();
+        }
     }
 
 }

@@ -11,6 +11,7 @@ namespace Infrastructure.Authentification
 {
     public class AuthentificationService : IAuthentificationService
     {
+        public static readonly string AuthorizationKey = Shared.Const.AuthorizationConst.SessionStorage.AuthorizationKey;
         private readonly JellyfishSignalRClient jellyfishSignalRClient;
         private readonly IJellyfishBackendApi jellyfishBackendApi;
         private readonly ILocalStorageService localStorageService;
@@ -26,7 +27,7 @@ namespace Infrastructure.Authentification
         }
 
         public async Task<bool> Authentificate(string username, string password, CancellationToken cancellationToken)
-        {
+        { 
             var response = await jellyfishBackendApi.Authentificate(username, password, cancellationToken);
             if (response == null)
             {
@@ -34,16 +35,22 @@ namespace Infrastructure.Authentification
                 return false;
             }
 
-            jellyfishSignalRClient.OpenConnection();
-            await localStorageService.SetDeserializedJsonItemFromKey(Shared.Const.AuthorizationConst.SessionStorage.AuthorizationKey, response);
+            jellyfishSignalRClient.OpenConnection(cancellationToken);
+            await localStorageService.SetDeserializedJsonItemFromKey(AuthorizationKey, response);
             return true;
         }
+
+        public Task<AuthDTO> GetAuthentification(CancellationToken cancellationToken)
+        {
+            return localStorageService.GetDeserializedJsonItemFromKey<AuthDTO>(AuthorizationKey);
+        }
+
         public async Task<bool> Logout(CancellationToken cancellationToken)
         {
             var response = await jellyfishBackendApi.Logout(cancellationToken);
 
-            jellyfishSignalRClient.CloseConnection();
-            await localStorageService.RemoveItem(Shared.Const.AuthorizationConst.SessionStorage.AuthorizationKey);
+            jellyfishSignalRClient.CloseConnection(cancellationToken);
+            await localStorageService.RemoveItem(AuthorizationKey);
             return true;
         }
     }

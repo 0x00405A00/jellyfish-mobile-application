@@ -1,10 +1,10 @@
-﻿using Infrastructure.Handler.AppConfig;
+﻿using Infrastructure.Authentification;
+using Infrastructure.Handler.AppConfig;
 using Infrastructure.Handler.Data.InternalDataInterceptor;
 using Infrastructure.Handler.Device.Media;
-using Presentation.Service;
+using Presentation.Services;
 using Presentation.View;
 using Presentation.ViewModel;
-using Shared.Infrastructure.Backend.SignalR;
 
 namespace Presentation
 {
@@ -12,6 +12,7 @@ namespace Presentation
     {
         private CancellationTokenSource _webApiActionCancelationToken = new CancellationTokenSource();
         public App(
+            IAuthentificationService authentificationService,
             InitDataInterceptorApplicationModel initDataInterceptorApplicationModel,
             ApplicationConfigHandler applicationConfigHandler,
             LoginPageViewModel loginPageViewModel,
@@ -22,22 +23,24 @@ namespace Presentation
             InitializeComponent();
             Page viewPage = new NavigationPage(new LoginPage(loginPageViewModel));
             MainPage = viewPage;
-            Load(applicationConfigHandler, loginPageViewModel, mainPageViewModel, navigationService, applicationResourcesHandler);
-
+            Load(authentificationService,applicationConfigHandler, loginPageViewModel, mainPageViewModel, navigationService, applicationResourcesHandler);
         }
         public static Dictionary<string, ResourceDictionary> ResourceDictionary;
+
         public async Task Load(
+            IAuthentificationService authentificationService,
             ApplicationConfigHandler applicationConfigHandler,
             LoginPageViewModel loginPageViewModel,
             MainPageViewModel mainPageViewModel,
             NavigationService navigationService,
             ApplicationResourcesHandler applicationResourcesHandler)
         {
-            bool loggedin = true;
+            var authObj = await authentificationService.GetAuthentification(CancellationToken.None);
+            bool loggedin = authObj.IsAuthentificated;
 
             if (loggedin)
             {
-                await navigationService.PushAsync(new MainPage(mainPageViewModel));
+                //await navigationService.PushAsync(new MainPage(mainPageViewModel));
             }
 
             ResourceDictionary = new Dictionary<string, ResourceDictionary>();
@@ -51,4 +54,5 @@ namespace Presentation
             applicationResourcesHandler.ResourceDictionary = ResourceDictionary;
         }
     }
+
 }

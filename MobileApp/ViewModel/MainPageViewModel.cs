@@ -5,7 +5,7 @@ using Infrastructure.Handler.Device.Media.Contact;
 using Infrastructure.Handler.Device.Vibrate;
 using Presentation.Controls;
 using Presentation.Model;
-using Presentation.Service;
+using Presentation.Services;
 using Presentation.View;
 using Shared.Infrastructure.Backend.Api;
 using Shared.Infrastructure.Backend.SignalR;
@@ -22,6 +22,8 @@ namespace Presentation.ViewModel
         private readonly NavigationService _navigationService;
         private readonly IServiceProvider _serviceProvider;
         private readonly IAuthentificationService authentificationService;
+        private readonly IJellyfishBackendApi jellyfishBackendApi;
+        private readonly JellyfishSignalRClient signalRClient;
         private readonly DeviceContactHandler _deviceContactHandler;
         public ChatsPageViewModel ChatsPageViewModel
         {
@@ -39,7 +41,7 @@ namespace Presentation.ViewModel
             private set;
         }
 
-        public ICommand OpenSignalrConnectionCommand { get; private set; }
+        public ICommand OpenConnectionCommand { get; private set; }
         public ICommand LoadViewCommand { get; private set; }
         public ICommand BindingContextChangedCommand { get; private set; }
         public ICommand SwipeLeftCommand { get; private set; }
@@ -134,6 +136,7 @@ namespace Presentation.ViewModel
 
         public MainPageViewModel(IServiceProvider serviceProvider,
             IAuthentificationService authentificationService,
+            IJellyfishBackendApi jellyfishBackendApi,
             JellyfishSignalRClient signalRClient,
             SettingsPageViewModel settingsPageViewModel,
             VibrateHandler vibrateHandler,
@@ -152,6 +155,8 @@ namespace Presentation.ViewModel
             CallsPageViewModel = callsPageViewModel;
             _serviceProvider = serviceProvider;
             this.authentificationService = authentificationService;
+            this.jellyfishBackendApi = jellyfishBackendApi;
+            this.signalRClient = signalRClient;
             _navigationService = navigationService;
             BindingContextChangedCommand = new RelayCommand<object>(BindingContextChangedAction);
             SwipeLeftCommand = new RelayCommand<object>(SwipeLeftAction);
@@ -164,7 +169,7 @@ namespace Presentation.ViewModel
             CreateNewGroupCommand = new RelayCommand(CreateNewGroupAction);
             OpenSettingsPageCommand = new RelayCommand(OpenSettingsPageAction);
             CreateNewChatCommand = new RelayCommand(CreateNewChatAction);
-            OpenSignalrConnectionCommand = new RelayCommand(OpenSignalrConnection);
+            OpenConnectionCommand = new RelayCommand(OpenConnection);
             MenuItems = new ObservableCollection<MenuItemModel>()
             {
                 new MenuItemModel { Title = "New Chat", ExecCommand = CreateNewChatCommand },
@@ -174,14 +179,9 @@ namespace Presentation.ViewModel
             InitViewModel();
         }
 
-        private async void OpenSignalrConnection()
+        private async void OpenConnection()
         {
-            var auth = await authentificationService.Authentificate(_applicationConfigHandler.ApplicationConfig.AccountConfig.UserName, _applicationConfigHandler.ApplicationConfig.AccountConfig.Password, CancellationToken.None);
-            if(!auth)
-            {
-                Logout();
-                return;
-            }
+            signalRClient.OpenConnection(CancellationToken.None);
         }
 
         private void SetDefaultTab()
@@ -192,14 +192,6 @@ namespace Presentation.ViewModel
         public async void LoadViewCommandAction()
         {
 
-        }
-
-        public override void SignalrReconnectedAction()
-        {
-
-
-            base.SignalrReconnectedAction();
-            NotificationHandler.ToastNotify("Reconnect to MobileApp Servers...");
         }
 
         public override async void InitViewModel()

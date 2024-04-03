@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Infrastructure.Handler.AppConfig;
 using Infrastructure.Handler.Data.InternalDataInterceptor;
 using Presentation.Model;
-using Presentation.Service;
+using Presentation.Services;
 using Shared.Infrastructure.Backend.Interceptor.Abstraction;
 using System.Collections.ObjectModel;
 using System.Diagnostics;

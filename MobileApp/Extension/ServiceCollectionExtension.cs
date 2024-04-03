@@ -65,7 +65,6 @@ namespace Infrastructure.Extension
 
 
 
-
             return services;
         }
         public static MauiAppBuilder AddApplicationEvents(this MauiAppBuilder appBuilder, ApplicationConfigHandler applicationHandler)
